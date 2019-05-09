@@ -1,9 +1,27 @@
 package affichageGraphique;
 
+/**
+ * Classe donnant à l'utilisateur les infos qu'il a choisi
+ * @author Paul,Armand et Louise
+ *
+ */
 public class ZDialogInfo {
+	 /**
+	  * Les différentes infos à transmettre à l'utilisateur
+	  */
 	  private String nom, tplateau,ecostme, nbreAnimaux,tps;
-
+	  /**
+	   * Constructeur vide
+	   */
 	  public ZDialogInfo(){}
+	  /**
+	   * Constucteur
+	   * @param nom : nom donné à la simulation
+	   * @param tplateau : taille d'un côté du plateau
+	   * @param ecostme : type d'ecosystème choisi
+	   * @param nbreAnimaux : nombre d'animaux dans la simulation
+	   * @param tps : nombre de tours que va durer la simulation
+	   */
 	  public ZDialogInfo(String nom, String tplateau, String ecostme,  String nbreAnimaux,String tps){
 	    this.nom = nom;
 	    this.tplateau = tplateau;
