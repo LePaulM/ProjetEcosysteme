@@ -3,15 +3,38 @@ package biome;
 import animaux.Animal;
 import gestion.Gestionnaire;
 
+/**
+ * Classe permettant de gérer les cases
+ * @author Paul, Armand et Louise
+ *
+ */
 public abstract class Case {
 	
-	private /*abstract*/ int typeOccupation;//pk quand jmets abstract il gueule
+	/**
+	 * Le type d'occupation de la case (Herbe, eau, etc..)
+	 */
+	private  int typeOccupation;
+	/**
+	 * La case contient-elle un animal ? 
+	 */
 	private boolean estVide;
+	/**
+	 * La case contient-elle un cadavre ? 
+	 */
 	private boolean cadavre;
+	/**
+	 * La position de la case
+	 */
 	private int position[];
 	
 	
-	
+	/**
+	 * Constructeur
+	 * @param typeOccupation : Le type d'occupation de la case (Herbe, eau, etc..)
+	 * @param estvide : La case contient-elle un animal ? 
+	 * @param cadavre :La case contient-elle un cadavre ? 
+	 * @param position : La position de la case
+	 */
 	public Case(int typeOccupation, boolean estvide, boolean cadavre, int[] position) {
 		super();
 		this.typeOccupation = typeOccupation;
@@ -19,11 +42,10 @@ public abstract class Case {
 		this.cadavre = cadavre;
 		this.position = position;
 	}
-	/*
-	public int getTypeOccupation() {
-		return typeOccupation;
-	}
-*/
+	
+	/**
+	 * getters et setters
+	 */
 	public boolean getEstVide() {
 		return estVide;
 	}

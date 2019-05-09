@@ -2,6 +2,11 @@ package biome;
 
 import gestion.Gestionnaire;
 
+/**
+ * Cette classe sert à décrire les cases de type eau
+ * @author Paul, Armand et Louise
+ *
+ */
 public class Arbre extends Case{
 	/**
 	 * stock de nourriture que contient la foret
@@ -10,13 +15,20 @@ public class Arbre extends Case{
 
 	/**
 	 * Constructeur
+	 * @param position : position de la case
 	 */
 	public Arbre(int[] position) {
 		super(3, true, false, position);
 		this.nourriture=20;
 	}
 	
-	
+	/**
+	 * Constructeur
+	 * @param typeOccupation : type d'occupation de la case (ici eau = 2)
+	 * @param estvide : la case contient-elle un animal ?
+	 * @param cadavre : la case contient-elle un cadavre ? 
+	 * @param position : position de la case
+	 */
 	public Arbre(int typeOccupation, boolean estvide, boolean cadavre, int[] position) {
 		super(3, estvide, cadavre, position);
 		this.nourriture=20;
@@ -63,6 +75,9 @@ public class Arbre extends Case{
 		}
 	}
 
+	/**
+	 * getter
+	 */
 	@Override
 	public int getTypeOccupation() {
 		return 3;
