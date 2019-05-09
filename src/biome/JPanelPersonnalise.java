@@ -20,20 +20,20 @@ public class JPanelPersonnalise extends JPanel {
 		this.y = y;
 	}
 
-	ImageIcon bouquetin = new ImageIcon("ecosysteme/ressources/bouquetin.png");
-	ImageIcon chacal = new ImageIcon("ecosysteme/ressources/chacal.png");
-	ImageIcon cheval = new ImageIcon("ecosysteme/ressources/cheval.png");
-	ImageIcon crocodile = new ImageIcon("ecosysteme/ressources/crocodile.png");
-	ImageIcon girafe = new ImageIcon("ecosysteme/ressources/girafe.png");
-	ImageIcon hyene = new ImageIcon("ecosysteme/ressources/hyene.png");
-	ImageIcon loup = new ImageIcon("ecosysteme/ressources/loup.png");
-	ImageIcon mammouth = new ImageIcon("ecosysteme/ressources/mammouth.png");
-	ImageIcon mouche = new ImageIcon("ecosysteme/ressources/mouche.png");
-	ImageIcon ours = new ImageIcon("ecosysteme/ressources/ours.png");
-	ImageIcon renard = new ImageIcon("ecosysteme/ressources/renard.png");
-	ImageIcon singe = new ImageIcon("ecosysteme/ressources/singe.png");
-	ImageIcon tigre = new ImageIcon("ecosysteme/ressources/tigre.png");
-	ImageIcon vautour = new ImageIcon("ecosysteme/ressources/vautour.png");
+	ImageIcon bouquetin = new ImageIcon("ressources/bouquetin.png");
+	ImageIcon chacal = new ImageIcon("ressources/chacal.png");
+	ImageIcon cheval = new ImageIcon("ressources/cheval.png");
+	ImageIcon crocodile = new ImageIcon("ressources/crocodile.png");
+	ImageIcon girafe = new ImageIcon("ressources/girafe.png");
+	ImageIcon hyene = new ImageIcon("ressources/hyene.png");
+	ImageIcon loup = new ImageIcon("ressources/loup.png");
+	ImageIcon mammouth = new ImageIcon("ressources/mammouth.png");
+	ImageIcon mouche = new ImageIcon("ressources/mouche.png");
+	ImageIcon ours = new ImageIcon("ressources/ours.png");
+	ImageIcon renard = new ImageIcon("ressources/renard.png");
+	ImageIcon singe = new ImageIcon("ressources/singe.png");
+	ImageIcon tigre = new ImageIcon("ressources/tigre.png");
+	ImageIcon vautour = new ImageIcon("ressources/vautour.png");
 
 	public void setX(int x){
 		this.x = x;
