@@ -6,7 +6,11 @@ import java.util.TimerTask;
 
 import affichageGraphique.ZDialog;
 import animaux.Animal;
-
+/**
+ * Classe permettant de gérer le temps et les tours
+ * @author Paul,Armand et Louise
+ *
+ */
 public class Gestionnaire {
 
 	/**
@@ -20,9 +24,10 @@ public class Gestionnaire {
 	private int id;
 	private static int cadence;
 	private static ArrayList<Animal> animaux = new ArrayList<Animal>();
-
+	
+	
 	/**
-	 * getter et setter
+	 * getters et setters
 	 * 
 	 */
 
@@ -56,20 +61,27 @@ public class Gestionnaire {
 		animaux.add(animal);
 	}
 
-
+	/**
+	 * 
+	 */
 	public void jeu() {
 		for (int i = 0; i >= Integer.parseInt(ZDialog.getTps()); i++) {
+
+			System.out.println("dfger");
 			TimerTask task = new TimerTask() {
 				public void run() { 
 					Gestionnaire.nouveauTour();
 				};
 			};
 			Timer timer = new Timer(); 
-			timer.scheduleAtFixedRate( task, 0, 10000); //ce bout de code sert à mettre un timer pour que le tour passe au suivant automatiquement
+			timer.scheduleAtFixedRate( task,0, 1000); //ce bout de code sert à mettre un timer pour que le tour passe au suivant automatiquement
 
 		}
 	}
 
+	/**
+	 * Méthode créant un nouveau tour et appelant toutes les méthodes avec les actions des animaux
+	 */
 	public static void nouveauTour() {
 		tour = tour++;
 		for (Animal animal : animaux) {							// pour chaque animal présent dans la simulation
