@@ -78,18 +78,14 @@ public class Savane extends Grille{
 		//		Methode vide car il n'y a pas de montagne dans la savane
 	}
 	
-	/**
-	 * Quantitee de buissons et d'arbres dans l'ecosysteme Savane ---> a mettre absolument dans une methode ??
-	 */
-	int arbre = (int)Math.pow(getTaille(),2)*5/(21*100);
-	int buisson=(int)70*getTaille()/100;
-	
 	
 	/**
 	 * Methode qui cree la grille avec ses composantes, l'ajout successif des sols suit un ordre bien precis
 	 */
 	@Override
 	public void creationGrille() {
+		int arbre = (int)Math.pow(getTaille(),2)*5/(21*100);
+		int buisson=(int)70*getTaille()/100;
 		Savane savane = new Savane(getTaille());
 		
 		savane.creationArbre(arbre);
