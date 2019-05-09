@@ -49,10 +49,6 @@ public class JPanelPersonnalise extends JPanel {
 		Graphics2D g2d = (Graphics2D) g;
 
 		int tailleCaseEnPixel = 1200 / ZDialog.getTaille();
-		//System.out.println(tailleCaseEnPixel);
-		//System.out.println(x);
-		//System.out.println(grille.getCase(x, y).getEstVide());
-		//System.out.println("coucou " + grille.toString());
 		if(Grille.getCase(x, y).getEstVide() == false) {
 			if (Grille.getCase(x, y).getAnimal().getEspece().equals("Bouquetin")) {
 				Image bouquetinImaged = bouquetin.getImage();

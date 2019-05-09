@@ -5,7 +5,11 @@ import java.util.Arrays;
 import java.util.List;
 import javax.swing.JFrame;
 
-
+/**
+ * Classe gérant la grille
+ * @author Paul,Armand et Louise
+ *
+ */
 public abstract class Grille {
 
 	/**
@@ -27,19 +31,15 @@ public abstract class Grille {
 	public int getTaille() {
 		return taille;
 	}
-/* ancienne version
-	public int[][] getGrille() {
-		return grille;
-	}
-*/
+	
 	public ArrayList<ArrayList<Case>> getGrille() {
 		return grille;
 	}
 	/**
-	 * Une methode (ou getter ??) qui recupere le contenu de la grille a une position (x,y)
+	 * Getter qui recupere le contenu de la grille a une position (x,y)
 	 * Cette m�thode doit r�cup�rer la case pr�sente � la position (x, y normalement - Paul
-	 * @param x
-	 * @param y
+	 * @param x : coordonnée en abscisse du contenu
+	 * @param y : coordonnée en ordonnée du contenu
 	 * @return
 	 */
 	public static Case getCase(int x, int y) {
@@ -49,9 +49,8 @@ public abstract class Grille {
 	
 	/**
 	 * constructeur de la grille sous forme de matrice
-	 * @param taille
+	 * @param taille : taille d'un côté de la grille
 	 */
-	//nouvelle version
 	public Grille(int taille) {
 		this.taille=taille;
 		this.grille=new ArrayList<ArrayList<Case>>();
@@ -69,23 +68,12 @@ public abstract class Grille {
 	}
 
 	/**
-	 * une methode qui permet de modifier une case de la grille
-	 */
-	/*
-	public void modifier(int x, int y, int z){
-		this.grille[x][y]=z;
-		
-	}
-	 */
-
-	/**
 	 * Une methode qui cree les buissons, applicable a toutes les classes filles, c'est une g�n�ration dans l'espace al�atoirement d'une quantitee de buisson definie en parametre. Lors de la creation de la grille un buisson ne peut etre place ni sur un autre buisson, ni sur aucun autre sol excepte l'herbe et le sable.
-	 * @param buisson
+	 * @param nbrBuisson : nombre de buissons souhaités dans le biome
 	 */
-	//nouvelle version
-	public void creationBuisson(int buisson) {
+	public void creationBuisson(int nbreBuisson) {
 		int i=0;
-		while(i<buisson) {
+		while(i<nbreBuisson) {
 			double a=Math.random()*this.taille;
 			double b=Math.random()*this.taille;
 			int x=(int)a;
@@ -109,12 +97,13 @@ public abstract class Grille {
 	}
 
 	/**
-	 * Une methode qui cree les arbres, applicable a toutes les classes filles, c'est une g�n�ration dans l'espace al�atoirement d'une quantitee d'arbre definie en parametre. Un arbres est grand et donc occupe plusieurs cases. Lors de la creation de la grille un arbre ne peut etre place sur aucun autre sol excepte l'herbe, le sable et les buissons, il ne peut superposer que legerment un autre arbre.
-	 * @param arbre
+	 * Une methode qui cree les arbres, applicable a toutes les classes filles, c'est une g�n�ration dans l'espace al�atoirement d'une 
+	 * quantitee d'arbre definie en parametre. Un arbres est grand et donc occupe plusieurs cases. Lors de la creation de la grille un arbre ne peut etre place sur aucun autre sol excepte l'herbe, le sable et les buissons, il ne peut superposer que legerment un autre arbre.
+	 * @param nbreArbre : nombre d'abres souhaités dans le biome
 	 */
-	public void creationArbre(int arbre) {
+	public void creationArbre(int nbreArbre) {
 		int i=0;
-		while(i<arbre) {
+		while(i<nbreArbre) {
 			double a=Math.random()*this.taille;
 			double b=Math.random()*this.taille;
 			int x=(int)a;
@@ -196,10 +185,16 @@ public abstract class Grille {
 		}
 	}
 	/**
-	 * methodes abstraite redefinie dans les classes filles
-	 */
+	 * methode de création de neige
+	 **/
 	public abstract void creationNeige();
+	/**
+	 * Méthode de création d'eau
+	 */
 	public abstract void creationEau();
+	/**
+	 * Méthode de création de montagnes
+	 */
 	public abstract void creationMontagne();
 
 
@@ -210,10 +205,8 @@ public abstract class Grille {
 	public  abstract void creationGrille();
 	  
 	/**
-	 * Une methode qui afficher la grille dans la console, ce n'est pas l'interface graphique.
+	 * Une methode qui affiche la grille dans la console sous forme de matrice d'int
 	 */
-	
-	//nouvelle version
 	public void afficher() {
 		for(int i=0;i<this.taille;i++) {
 			for (int j=0;j<this.taille;j++) {

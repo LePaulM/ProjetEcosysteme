@@ -1,5 +1,10 @@
 package biome;
 
+/**
+ * Classe permettant de gérer le biome de type Savane
+ * @author Paul,Armand et Louise
+ *
+ */
 public class Savane extends Grille{
 
 	/**

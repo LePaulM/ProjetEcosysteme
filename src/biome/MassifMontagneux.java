@@ -1,5 +1,10 @@
 package biome;
 
+/**
+ * Classe permettant de gérer le biome de type Massif Montagneux
+ * @author Paul,Armand et Louise
+ *
+ */
 public class MassifMontagneux extends Grille{
 	
 	/**

@@ -2,6 +2,11 @@ package biome;
 
 import gestion.Gestionnaire;
 
+/**
+ * Cette classe sert à décrire les cases de type herbe
+ * @author Paul, Armand et Louise
+ *
+ */
 public class Herbe extends Case{
 	
 	/**
@@ -11,12 +16,20 @@ public class Herbe extends Case{
 
 	/**
 	 * Constructeur
+	 * @param position : position de la case
 	 */
 	public Herbe(int[] position) {
 		super(0, true, false, position);
 		this.nourriture=10;
 	}
 	
+	/**
+	 * Constructeur
+	 * @param typeOccupation : type d'occupation de la case (ici eau = 2)
+	 * @param estvide : la case contient-elle un animal ?
+	 * @param cadavre : la case contient-elle un cadavre ? 
+	 * @param position : position de la case
+	 */
 	public Herbe(int typeOccupation, boolean estvide, boolean cadavre, int[] position) {
 		super(0, estvide, cadavre, position);
 		this.nourriture=10;
@@ -61,13 +74,11 @@ public class Herbe extends Case{
 		}
 	}
 	
+	/**
+	 * getter
+	 */
 	public int getTypeOccupation() {
 		return 0;
 	}
 	
 }
-/*
- public void afficher() {
-	 System.out.println(nourriture);
- }
-*/
