@@ -13,25 +13,16 @@ import gestion.Gestionnaire;
  *
  */
 public class Condor extends Charognard{
+
 	/**
 	 * Constructeur
-	 * @param dateNaissance
-	 * @param dateDeces
-	 * @param accesForet
-	 * @param esperanceVie
-	 * @param vitesse
-	 * @param vivant
-	 * @param tpDecomposition
-	 * @param espece
-	 * @param tailleEstomac
-	 * @param remplissageEstomac
-	 * @param viande
-	 * @param maturite
-	 * @param aProcree
-	 * @param meurtFaim
+	 * @param dateNaissance : tour où l'animal est né
+	 * @param emplacement : Case où se situe l'animal
+	 * @param maturite : Tour à partir duquel l'animal peut se reproduire 
+	 * @param aProcree : Indique si l'animal s'est reproduit il y a un certain nombre de tours
+	 * @param meurtFaim : indique si l'animal est en état de famine
 	 */
-	public Condor(int dateNaissance, Case emplacement,  boolean maturite,
-			boolean aProcree,int meurtFaim) {
+	public Condor(int dateNaissance, Case emplacement,  boolean maturite,boolean aProcree,int meurtFaim) {
 		super(dateNaissance, emplacement, maturite,aProcree,meurtFaim);
 
 		// on donne un id à l'animal
@@ -46,6 +37,8 @@ public class Condor extends Charognard{
 
 		//	le condor a une vitesse de 2
 		vitesse = 4;
+		
+		setEspece("Condor");
 	}
 
 	/**

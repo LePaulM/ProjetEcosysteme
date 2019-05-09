@@ -16,36 +16,27 @@ import biome.Grille;
  *
  */
 public abstract class Carnivore extends Animal{
+
 	/**
 	 * Constructeur
-	 * @param id
-	 * @param dateNaissance
-	 * @param dateDeces
-	 * @param accesForet
-	 * @param esperanceVie
-	 * @param vitesse
-	 * @param vivant
-	 * @param espece
-	 * @param tailleEstomac
-	 * @param remplissageEstomac
-	 * @param viande
-	 * @param maturite
-	 * @param aProcree
-	 * @param meurtFaim
+	 * @param dateNaissance : tour où l'animal est né
+	 * @param emplacement : Case où se situe l'animal
+	 * @param maturite : Tour à partir duquel l'animal peut se reproduire 
+	 * @param aProcree : Indique si l'animal s'est reproduit il y a un certain nombre de tours
+	 * @param meurtFaim : indique si l'animal est en état de famine
 	 */
 	public Carnivore(int dateNaissance, Case emplacement, boolean maturite,
 			boolean aProcree,int meurtFaim) {
 		super(dateNaissance,emplacement, maturite,aProcree,meurtFaim);
 	}
 
+	@Override
 	public void seNourrir(){
-		if (getEstVivant() == false) {
-		} else {
+		if (getEstVivant() == true) {
 			if (this.getRemplissageEstomac() < this.getTailleEstomac()) {
-				//		Création de la liste des cases adjacentes
-				ArrayList<Case> cases = new ArrayList<Case>();
-				//			Définition des cases adjacentes
-				Case case1 = Grille.getCase(this.getEmplacement().getX()-1,this.getEmplacement().getY()-1);	// marche avec les coordonn�es de la case
+				ArrayList<Case> cases = new ArrayList<Case>();	// Création de la liste des cases adjacentes
+				// Définition des cases adjacentes à l'animal
+				Case case1 = Grille.getCase(this.getEmplacement().getX()-1,this.getEmplacement().getY()-1);	// marche avec les coordonnées de la case
 				cases.add(case1);
 				Case case2 = Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()-1);
 				cases.add(case2);
@@ -64,20 +55,19 @@ public abstract class Carnivore extends Animal{
 				for (Case c : cases) {
 					// si la case contient un animal, et que l'animal n'est pas un autre carnivore, 
 					// le carnivore le tue
-					if(c.getEstVide() == true || c.getAnimal().getEspece() != this.getEspece()) {
-						c.getAnimal().decede();
+					if(c.getEstVide() == false &&  !c.getAnimal().getEspece().contentEquals(this.getEspece())) {
+						c.getAnimal().decede();	
 						if (getRemplissageEstomac() < getTailleEstomac()) {
 							// si l'animal tué contient plus de nourriture que l'animal n'a de place dans son estomac, 
 							// alors il mange juste à sa faim
 							if (c.getAnimal().getViande() > (this.getTailleEstomac() - this.getRemplissageEstomac())) {
 								c.getAnimal().setViande(c.getAnimal().getViande() - (this.getTailleEstomac() - this.getRemplissageEstomac()));
 								this.setRemplissageEstomac(this.getTailleEstomac());
-								this.setRemplissageEstomac(getRemplissageEstomac() + c.getAnimal().getViande());
 							} 
 							// sinon si l'animal a suffisament faim et que la case ne contient pas suffisament ou juste assez
 							// de nourriture pour le rassasier, il mange tout la nourriture présente sur la case
 							// le stock de nourriture tombe donc à 0
-							else if (getRemplissageEstomac() + c.getAnimal().getViande() <= getTailleEstomac()){
+							else{
 								this.setRemplissageEstomac(getRemplissageEstomac() + c.getAnimal().getViande());
 								c.getAnimal().setViande(this.getTailleEstomac() - this.getRemplissageEstomac());
 								c.getAnimal().setViande(0);
@@ -85,11 +75,13 @@ public abstract class Carnivore extends Animal{
 							}
 						}
 					}			
-					break;			//une fois que l'animal s'est nourri on arrête la boucle (un animal ne se nourrit qu'une seule fois par tour
+					break;	// une fois que l'animal s'est nourri on arrête la boucle (un animal ne se nourrit qu'une seule fois par tour
 				}
 
 			}
 		}
 	}
+	
+	@Override
 	public abstract void seReproduire();
 }

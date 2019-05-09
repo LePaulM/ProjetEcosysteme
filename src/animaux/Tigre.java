@@ -20,23 +20,13 @@ import gestion.Gestionnaire;
 public class Tigre extends Charognard{
 	/**
 	 * Constructeur
-	 * @param id
-	 * @param dateNaissance
-	 * @param dateDeces
-	 * @param accesForet
-	 * @param esperanceVie
-	 * @param vitesse
-	 * @param estVivant
-	 * @param espece
-	 * @param tailleEstomac
-	 * @param remplissageEstomac
-	 * @param viande
-	 * @param maturite
-	 * @param aProcree
-	 * @param meurtFaim
+	 * @param dateNaissance : tour où l'animal est né
+	 * @param emplacement : Case où se situe l'animal
+	 * @param maturite : Tour à partir duquel l'animal peut se reproduire 
+	 * @param aProcree : Indique si l'animal s'est reproduit il y a un certain nombre de tours
+	 * @param meurtFaim : indique si l'animal est en état de famine
 	 */
-	public Tigre(int dateNaissance,  Case emplacement,  boolean maturite,
-			boolean aProcree,int meurtFaim) {
+	public Tigre(int dateNaissance,  Case emplacement,  boolean maturite,boolean aProcree,int meurtFaim) {
 		super(dateNaissance,emplacement,  maturite,aProcree,meurtFaim);
 		
 		// on donne un id à l'animal
@@ -54,6 +44,8 @@ public class Tigre extends Charognard{
 		
 		// la tigre contient 1 viande à la naissance
 		viande = 1;
+		
+		setEspece("Tigre");
 	}
 	
 	//définit l'image de l'animal

@@ -13,31 +13,25 @@ import biome.Case;
 public abstract class Herbivore extends Animal{
 	/**
 	 * Constructeur
-	 * @param id
-	 * @param dateNaissance
-	 * @param dateDeces
-	 * @param accesForet
-	 * @param esperanceVie
-	 * @param vitesse
-	 * @param vivant
-	 * @param espece
-	 * @param tailleEstomac
-	 * @param viande
-	 * @param maturite
-	 * @param aProcree
-	 * @param meurtFaim
+	 * @param dateNaissance : tour où l'animal est né
+	 * @param emplacement : Case où se situe l'animal
+	 * @param maturite : Tour à partir duquel l'animal peut se reproduire 
+	 * @param aProcree : Indique si l'animal s'est reproduit il y a un certain nombre de tours
+	 * @param meurtFaim : indique si l'animal est en état de famine
 	 */
-
-	public Herbivore(int dateNaissance,  Case emplacement,   boolean maturite,
-			boolean aProcree,int meurtFaim) {
+	public Herbivore(int dateNaissance, Case emplacement, boolean maturite, boolean aProcree, int meurtFaim) {
 		super(dateNaissance,emplacement, maturite,aProcree,meurtFaim);
 	}
 
+	/**
+	 * Cette méthode remplit l'estomac de l'animal s'il n'est pas déjà plein. La case sur laquelle il est diminue également en quantité de nourriture.
+	 * Dans le cas d'un herbivore, il mange de la nourriture disponible sur certains types de cases
+	 */
+	@Override
 	public void seNourrir(){
 		if (this.getRemplissageEstomac() < this.getTailleEstomac()) {
 			// si la case est de type "Herbe" (0), "Buisson" (1) ou Foret (3), l'herbivore peut manger
-			if(this.getEmplacement().getTypeOccupation() == 0 || this.getEmplacement().getTypeOccupation() == 1
-					|| this.getEmplacement().getTypeOccupation() == 3 ) {
+			if(this.getEmplacement().getTypeOccupation() == 0 || this.getEmplacement().getTypeOccupation() == 1 || this.getEmplacement().getTypeOccupation() == 3 ) {
 				if (getRemplissageEstomac() < getTailleEstomac()) {
 					// si la case contient plus de nourriture que l'animal ne peut en manger, 
 					// alors il mange juste à sa faim
@@ -51,7 +45,6 @@ public abstract class Herbivore extends Animal{
 					// la case lance alors son processus de recuperation
 					else if (getRemplissageEstomac() + this.getEmplacement().getNourriture() <= getTailleEstomac()){
 						this.setRemplissageEstomac(getRemplissageEstomac() + this.getEmplacement().getNourriture());
-						this.getEmplacement().setNourriture(this.getTailleEstomac() - this.getRemplissageEstomac());
 						this.getEmplacement().setNourriture(0);
 						this.getEmplacement().recuperation();
 					}
@@ -59,5 +52,7 @@ public abstract class Herbivore extends Animal{
 			}
 		}
 	}
+	
+	@Override
 	public abstract void seReproduire();
 }

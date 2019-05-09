@@ -9,23 +9,82 @@ import gestion.Gestionnaire;
 
 
 public abstract class Animal {
-	int id;
-	private int dateNaissance;
-	private int dateDeces;
-	protected boolean accesForet;
-	protected int esperanceVie;
-	private Case emplacement;
-	protected int vitesse;
-	private boolean estVivant;
-	private String espece;
-	protected int tailleEstomac;
-	private int remplissageEstomac;
-	protected int viande;
-	private boolean maturite;
-	private boolean aProcree;
-	private int meurtFaim;
 
 	/**
+	 * identifiant de l'individu, cet identifiant permet au gestionnaire de faire "jouer" les individus
+	 */
+	int id;
+
+	/**
+	 * numéro du tour où l'animal est né
+	 */
+	private int dateNaissance;
+
+	/**
+	 * numéro du tour où l'animal décède (change chaque tour jusqu'à sa mort)
+	 */
+	private int dateDeces;
+
+	/**
+	 * Si l'animal peut accéder à la foret
+	 */
+	protected boolean accesForet;
+
+	/**
+	 * Valeur indiquant l'age jusqu'auquel l'animal peut vivre 
+	 */
+	protected int esperanceVie;
+
+	/**
+	 * objet de type Case sur laquelle se trouve l'animal
+	 */
+	private Case emplacement;
+
+	/**
+	 * indique la vitesse de déplacement de l'animal
+	 */
+	protected int vitesse;
+
+	/**
+	 * Si l'animal est vivant
+	 */
+	private boolean estVivant;
+
+	/**
+	 * définit le nom de l'espèce d'animal
+	 */
+	private String espece;
+
+	/**
+	 * définit la quantité totale de nourriture que l'animal peut manger
+	 */
+	protected int tailleEstomac;
+
+	/**
+	 * définit l'appétit de l'animal. plus ce nombre est faible plus l'animal aura besoin de nourriture ce nombre décroit chaque tour
+	 */
+	private int remplissageEstomac;
+
+	/**
+	 * 
+	 */
+	protected int viande;
+
+	/**
+	 * définit l'age auquel l'animal est assez grand pour se reproduire
+	 */
+	private boolean maturite;
+
+	/**
+	 * si l'animal a procréé récemment 
+	 */
+	private boolean aProcree;
+
+	/**
+	 *  Indique le nombre de tours restants lorsque l'animal est en état de famine
+	 */
+	private int meurtFaim;
+
 	/**
 	 * Constructeur	
 	 * @param id : identifiant de l'individu, cet identifiant permet au gestionnaire de faire "jouer" les individus
@@ -37,14 +96,7 @@ public abstract class Animal {
 	 * @param aProcree : si l'animal a procréé récemment 
 	 * @param meurtFaim : Indique le nombre de tours restants lorsque l'animal est en état de famine
 	 */
-
-
-	// il faut changer famine() de place dans les diagrammes de sequence
-	//ca ne sert à rien de faire des tests sur des animaux mort - Paul
-
-	public Animal(int dateNaissance,  Case emplacement,  boolean maturite,
-			boolean aProcree,int meurtFaim) {
-
+	public Animal(int dateNaissance, Case emplacement, boolean maturite, boolean aProcree, int meurtFaim) {
 		this.id = Gestionnaire.getAnimaux().size() + 1;
 		this.dateNaissance = dateNaissance;
 		this.emplacement = emplacement;
@@ -189,54 +241,53 @@ public abstract class Animal {
 
 	/**
 	 * Cette méthode déplace l'animal sur une case, à l'aide d'un Random pour la direction (et en fonction de l'occupation  
-	 * des cases alentours) et de sa vitesse
+	 * des cases alentours) et de sa vitesse, nous allons tester pour chacune des directions alentours
 	 */
 	public void seDeplacer() {
-		int direction=(int)(Math.random() * 9);					// 		on choisit un nombre entre 1 et 9 qui determinera quelle direction suivra l'animal
+		int direction=(int)(Math.random() * 9);	// on choisit un nombre entre 1 et 9 qui determinera quelle direction suivra l'animal
 		if (direction==1) {
-			Case caseSuivante = Grille.getCase(this.getEmplacement().getX() - this.vitesse,this.getEmplacement().getY() + this.vitesse);		//		on définit ce qui sera la prochaine case
-			if (caseSuivante.getEstVide() == true) {				//		si la case est vide
+			Case caseSuivante = Grille.getCase(this.getEmplacement().getX() - this.vitesse, this.getEmplacement().getY() + this.vitesse); // on définit ce qui sera la prochaine case
+			if (caseSuivante.getEstVide() == true) { // si la case est vide
 				if (caseSuivante.getTypeOccupation() != 2) {
-					this.setEmplacement(caseSuivante);				//		on y va
-					caseSuivante.setEstVide(false);					//		la case n'est plus vide
-					}					
+					this.setEmplacement(caseSuivante);	//	on y va
+					caseSuivante.setEstVide(false);		//	la case n'est plus vide
+				}					
 			} else {
-				this.seDeplacer();								//		si la case n'est pas vide on recommence
+				this.seDeplacer();	//si la case n'est pas vide on recommence
 			}
 		}
+
 		if(direction==2) {
-			int nouveauX = this.getEmplacement().getX();
-			int nouveauY = this.getEmplacement().getY() + this.vitesse;
-			Case caseSuivante = Grille.getCase(nouveauX,nouveauY);
+			Case caseSuivante = Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY() + this.vitesse);
 			if (caseSuivante.getEstVide() == true) {
 				if (caseSuivante.getTypeOccupation() != 2) {
 					this.setEmplacement(caseSuivante);
 					caseSuivante.setEstVide(false);
-					}
-			} else {
-				this.seDeplacer();
-			}
-		}
-		
-		if(direction==3) {
-			Case caseSuivante = Grille.getCase(this.getEmplacement().getX()+this.vitesse,this.getEmplacement().getY()+this.vitesse);
-			if (caseSuivante.getEstVide() == true) {
-				if (caseSuivante.getTypeOccupation() != 2) {
-				this.setEmplacement(caseSuivante);
-				caseSuivante.setEstVide(false);
 				}
 			} else {
 				this.seDeplacer();
 			}
 		}
-		
+
+		if(direction==3) {
+			Case caseSuivante = Grille.getCase(this.getEmplacement().getX()+this.vitesse,this.getEmplacement().getY()+this.vitesse);
+			if (caseSuivante.getEstVide() == true) {
+				if (caseSuivante.getTypeOccupation() != 2) {
+					this.setEmplacement(caseSuivante);
+					caseSuivante.setEstVide(false);
+				}
+			} else {
+				this.seDeplacer();
+			}
+		}
+
 		if(direction==4) {
 			Case caseSuivante = Grille.getCase(this.getEmplacement().getX()-this.vitesse,this.getEmplacement().getY());
 			if (caseSuivante.getEstVide() == true) {
 				if (caseSuivante.getTypeOccupation() != 2) {
 					this.setEmplacement(caseSuivante);
 					caseSuivante.setEstVide(false);
-					}
+				}
 			}else {
 				this.seDeplacer();
 			}
@@ -247,50 +298,54 @@ public abstract class Animal {
 				if (caseSuivante.getTypeOccupation() != 2) {
 					this.setEmplacement(caseSuivante);
 					caseSuivante.setEstVide(false);
-					}
+				}
 			} else {
 				this.seDeplacer();
 			}
 		}
-		
+
 		if (direction==6) {
 			Case caseSuivante = Grille.getCase(this.getEmplacement().getX()-this.vitesse,this.getEmplacement().getY()-this.vitesse);
 			if (caseSuivante.getEstVide() == true) {
 				if (caseSuivante.getTypeOccupation() != 2) {
 					this.setEmplacement(caseSuivante);
 					caseSuivante.setEstVide(false);
-					}
+				}
 			} else {
 				this.seDeplacer();
 			}
 		}
-		
+
 		if(direction==7) {
 			Case caseSuivante = Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()-this.vitesse);
 			if (caseSuivante.getEstVide() == true) {
 				if (caseSuivante.getTypeOccupation() != 2) {
 					this.setEmplacement(caseSuivante);
 					caseSuivante.setEstVide(false);
-					}
+				}
 			} else {
 				this.seDeplacer();
 			}
 		}
-		
-		Case caseSuivante = Grille.getCase(this.getEmplacement().getX()+this.vitesse,this.getEmplacement().getY()-this.vitesse);
-		if (caseSuivante.getEstVide() == true) {
-			if (caseSuivante.getTypeOccupation() != 2) {
-				this.setEmplacement(caseSuivante);
-				caseSuivante.setEstVide(false);
-				}
-			
-			Grille.getCase(caseSuivante.getPosition()[0],caseSuivante.getPosition()[1]);
-		
-		} else {
-			this.seDeplacer();
-		}
-	}				
 
+		if(direction==8) {
+			Case caseSuivante = Grille.getCase(this.getEmplacement().getX()+this.vitesse,this.getEmplacement().getY()-this.vitesse);
+			if (caseSuivante.getEstVide() == true) {
+				if (caseSuivante.getTypeOccupation() != 2) {
+					this.setEmplacement(caseSuivante);
+					caseSuivante.setEstVide(false);
+				}
+
+
+			} else {
+				this.seDeplacer();
+			}
+		}	
+	}
+
+	/**
+	 * méthode qui permet à l'animal de se reproduire avec un autre animal de la meme espece
+	 */
 	public abstract void seReproduire();
 
 	/**
@@ -298,19 +353,22 @@ public abstract class Animal {
 	 * ne meure de faim.
 	 */
 	public boolean famine() {
-		if (estVivant == false) {					// si l'animal est decedé 
-			return false;							// on passe à la suite du tour
+		boolean famine=false;
+		if (estVivant == false) {					// on passe à la suite du tour
 		} else if (remplissageEstomac == 0) {		// sinon si l'estomac est vide
 			meurtFaim = meurtFaim - 1;				// le compteur qui dit combien de temps l'animal peut vivre sans manger prend - 1
-			if (meurtFaim == 0) {					// si ce compteur atteint zéro
-				return true;						// cette fonction renvoie true et il mourra au prochain tour
+			if (meurtFaim == 0) {                   // si ce compteur atteint zéro		
+				famine=true;				        // cette fonction renvoie true et il mourra au prochain tour
 			}					
-			else return false;						// sinon on passe à la suite du tour
-
+			else {
+				famine=false;} // sinon on passe à la suite du tour
 		}
-		return aProcree;
+		return famine;
 	}
 
+	/**
+	 * 
+	 */
 	public void afficherAnimal() {
 		//Jpanel.repaint()
 		//JPanel.revalidate()
@@ -322,11 +380,11 @@ public abstract class Animal {
 		// on le reconstuit a partir de la grille mise a jour
 		// ((JPanelGrille)this.getContentPane()).construire();
 		// this.getContentPane().revalidate();
-	//}
+		//}
 		//
 		// y a des trucs à faire avec tout ça, peut-êtr evoir avec hugo
 	}
-	
+
 
 	/**
 	 * cette méthode s'active lorsque l'animal décède

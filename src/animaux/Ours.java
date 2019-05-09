@@ -20,23 +20,13 @@ import gestion.Gestionnaire;
 public class Ours extends Carnivore{
 	/**
 	 * Constructeur
-	 * @param id
-	 * @param dateNaissance
-	 * @param dateDeces
-	 * @param accesForet
-	 * @param esperanceVie
-	 * @param vitesse
-	 * @param vivant
-	 * @param espece
-	 * @param tailleEstomac
-	 * @param remplissageEstomac
-	 * @param viande
-	 * @param maturite
-	 * @param aProcree
-	 * @param meurtFaim
+	 * @param dateNaissance : tour où l'animal est né
+	 * @param emplacement : Case où se situe l'animal
+	 * @param maturite : Tour à partir duquel l'animal peut se reproduire 
+	 * @param aProcree : Indique si l'animal s'est reproduit il y a un certain nombre de tours
+	 * @param meurtFaim : indique si l'animal est en état de famine
 	 */
-	public Ours(int dateNaissance, Case emplacement,  boolean maturite,
-			boolean aProcree,int meurtFaim) {
+	public Ours(int dateNaissance, Case emplacement,  boolean maturite,boolean aProcree,int meurtFaim) {
 		super(dateNaissance, emplacement,  maturite,aProcree,meurtFaim);
 
 		// on donne un id à l'animal
@@ -54,6 +44,8 @@ public class Ours extends Carnivore{
 
 		// l'ours contient 1 viande à la naissance
 		viande = 1;
+		
+		setEspece("Ours");
 	}
 	
 	//définit l'image de l'animal
@@ -113,12 +105,10 @@ public class Ours extends Carnivore{
 		}
 	}
 
+	/**
+	 * Méthode qui modifie la taille de l'estomac de l'animal ainsi que la quantité de viande qu'il peut fournir au fil de l'age
+	 */
 	public void croissance() {
-		/*
-		 * définition de la taille de l'estomac et de la viande disponible sur l'animal en fonction de son âge et de 
-		 * son espèce.
-		 * cette fonction est activée par le Gestionnaire en début de tour
-		 */
 		if ((Gestionnaire.getTour() - this.getDateNaissance())<=(esperanceVie/4)) {
 			setViande(3);
 			setTailleEstomac(2);
