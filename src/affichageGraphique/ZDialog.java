@@ -220,6 +220,7 @@ public class ZDialog extends JDialog{
 					Gestionnaire savaneGes = new Gestionnaire();
 					Savane sav = new Savane(getTaille());
 					sav.creationGrille();
+					System.out.println(getAnimauxTot());
 					for (int i = 0; i < getAnimauxTot()/3; i++) {
 						int x = (int) (getTaille()* Math.random());
 						int y = (int) (getTaille()* Math.random());

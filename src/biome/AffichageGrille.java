@@ -64,7 +64,6 @@ public class AffichageGrille extends JPanel {
 				}
 				if (occupation == 7) {					
 					buttons[j].setBackground(montagne);
-					buttons[j].toString();
 					//System.out.println(i);
 				}
 				//} //else {

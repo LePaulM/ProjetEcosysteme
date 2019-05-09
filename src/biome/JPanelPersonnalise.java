@@ -90,15 +90,15 @@ public class JPanelPersonnalise extends JPanel {
 				Image moucheImaged = mouche.getImage();
 				g2d.drawImage(moucheImaged, 0, 0, tailleCaseEnPixel, tailleCaseEnPixel, null);
 			}
-			if (Grille.getCase(x, y).getAnimal().getEspece().equals("ours")) {
+			if (Grille.getCase(x, y).getAnimal().getEspece().equals("Ours")) {
 				Image oursImaged = ours.getImage();
 				g2d.drawImage(oursImaged, 0, 0, tailleCaseEnPixel, tailleCaseEnPixel, null);
 			}
-			if (Grille.getCase(x, y).getAnimal().getEspece().equals("renard")) {
+			if (Grille.getCase(x, y).getAnimal().getEspece().equals("Renard")) {
 				Image renardImaged = renard.getImage();
 				g2d.drawImage(renardImaged, 0, 0, tailleCaseEnPixel, tailleCaseEnPixel, null);
 			}
-			if (Grille.getCase(x, y).getAnimal().getEspece().equals("singe")) {
+			if (Grille.getCase(x, y).getAnimal().getEspece().equals("Singe")) {
 				Image singeImaged = singe.getImage();
 				g2d.drawImage(singeImaged, 0, 0, tailleCaseEnPixel, tailleCaseEnPixel, null);
 			}
