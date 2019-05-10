@@ -61,9 +61,6 @@ public class Gestionnaire {
 		animaux.add(animal);
 	}
 
-	/**
-	 * 
-	 */
 
 	/**
 	 * Méthode créant un nouveau tour et appelant toutes les méthodes avec les actions des animaux
