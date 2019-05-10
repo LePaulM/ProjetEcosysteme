@@ -54,7 +54,7 @@ public abstract class Animal {
 	/**
 	 * définit le nom de l'espèce d'animal
 	 */
-	private String espece;
+	protected String espece;
 
 	/**
 	 * définit la quantité totale de nourriture que l'animal peut manger
@@ -247,8 +247,8 @@ public abstract class Animal {
 	public void seDeplacer(int tailleGrille) {
 		int direction=(int)(Math.random() * 9);	// on choisit un nombre entre 1 et 9 qui determinera quelle direction suivra l'animal
 		Case caseSuivante; 
-		if (direction==1) {
-			if(this.getEmplacement().getX() - this.vitesse<0 && this.getEmplacement().getY() + this.vitesse>(tailleGrille-1)) {
+		if (direction == 1) {
+			if(this.getEmplacement().getX() - this.vitesse < 0 && this.getEmplacement().getY() + this.vitesse>(tailleGrille-1)) {
 				caseSuivante=Grille.getCase(this.getEmplacement().getX()+tailleGrille-this.vitesse,this.getEmplacement().getY()-tailleGrille+ this.vitesse);
 			}
 			else if (this.getEmplacement().getX() - this.vitesse<0) {
@@ -264,9 +264,10 @@ public abstract class Animal {
 			if(caseSuivante.getEstVide() == false) {
 				this.seDeplacer(tailleGrille);
 			}
-			
+			Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()).setEstVide(true);
 			this.setEmplacement(caseSuivante);
 			caseSuivante.setEstVide(false);
+			
 			
 		}
 
@@ -287,7 +288,7 @@ public abstract class Animal {
 			if(caseSuivante.getEstVide() == false) {
 				this.seDeplacer(tailleGrille);
 			}
-			
+			Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()).setEstVide(true);
 			this.setEmplacement(caseSuivante);
 			caseSuivante.setEstVide(false);
 			
@@ -310,7 +311,7 @@ public abstract class Animal {
 			if(caseSuivante.getEstVide() == false) {
 				this.seDeplacer(tailleGrille);
 			}
-			
+			Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()).setEstVide(true);
 			this.setEmplacement(caseSuivante);
 			caseSuivante.setEstVide(false);
 			
@@ -333,7 +334,7 @@ public abstract class Animal {
 			if(caseSuivante.getEstVide() == false) {
 				this.seDeplacer(tailleGrille);
 			}
-			
+			Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()).setEstVide(true);
 			this.setEmplacement(caseSuivante);
 			caseSuivante.setEstVide(false);
 			
@@ -355,7 +356,7 @@ public abstract class Animal {
 			if(caseSuivante.getEstVide() == false) {
 				this.seDeplacer(tailleGrille);
 			}
-			
+			Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()).setEstVide(true);
 			this.setEmplacement(caseSuivante);
 			caseSuivante.setEstVide(false);
 			
@@ -378,7 +379,7 @@ public abstract class Animal {
 			if(caseSuivante.getEstVide() == false) {
 				this.seDeplacer(tailleGrille);
 			}
-			
+			Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()).setEstVide(true);
 			this.setEmplacement(caseSuivante);
 			caseSuivante.setEstVide(false);
 			
@@ -401,7 +402,7 @@ public abstract class Animal {
 			if(caseSuivante.getEstVide() == false) {
 				this.seDeplacer(tailleGrille);
 			}
-			
+			Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()).setEstVide(true);
 			this.setEmplacement(caseSuivante);
 			caseSuivante.setEstVide(false);
 			
@@ -424,9 +425,9 @@ public abstract class Animal {
 			if(caseSuivante.getEstVide() == false) {
 				this.seDeplacer(tailleGrille);
 			}
+			Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()).setEstVide(true);
 			this.setEmplacement(caseSuivante);
 			caseSuivante.setEstVide(false);
-			
 		}
 		//ArrayList position=(caseSuivante.getX(),caseSuivante.getY());
 	}

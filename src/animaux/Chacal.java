@@ -42,7 +42,7 @@ public class Chacal extends Charognard {
 		//	le chacal a une vitesse de 2
 		vitesse = 2;
 		
-		setEspece("Chacal");
+		espece = "Chacal";
 		
 		
 	}

@@ -39,7 +39,7 @@ public class Girafe extends Herbivore{
 		// la girafe a une vitesse de 3
 		vitesse = 3;
 		
-		setEspece("Girafe");
+		espece = "Girafe";
 	}
 
 	/**

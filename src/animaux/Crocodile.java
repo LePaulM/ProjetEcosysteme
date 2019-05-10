@@ -39,7 +39,7 @@ public class Crocodile extends Carnivore{
 		// le crocodile a une vitesse de 1
 		vitesse = 1;
 		
-		setEspece("Crocodile");
+		espece = "Crocodile";
 	}
 
 	/**
