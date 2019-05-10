@@ -13,6 +13,7 @@ Cette application permet de simuler différents écosystèmes selon des choix d�
 * "Armand DRUGEON" <Armand.Drugeon@ensg.eu>
 * "Louise GRALL" <Louise.Grall@ensg.eu>
 </br>Dans le cadre du cours de projet JAVA, de première année d'ingénieur à l'ENSG.
+</br>De Mars à Mai 2019
 
 
 ## <a name="installation"></a> Installation
