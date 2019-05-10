@@ -22,7 +22,9 @@ public class Fenetre extends JFrame {
 		String environnementChoisi = (String) zd.getEcostme().getSelectedItem();
 		ZDialogInfo zInfo = zd.showZDialogI();
   
-		this.setVisible(true);      
+		this.setVisible(true);  
 	}
  
 }}
+
+

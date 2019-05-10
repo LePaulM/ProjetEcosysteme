@@ -3,8 +3,11 @@ package affichageGraphique;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -18,6 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import animaux.Animal;
 import animaux.Bouquetin;
 import animaux.Chacal;
 import animaux.Cheval;
@@ -140,6 +144,7 @@ public class ZDialog extends JDialog{
 		}
 	}
 
+	
 	/**
 	 * Méthode gérant le dialogue avec l'utilisateur et l'affichage du premier plateau
 	 */
@@ -210,7 +215,7 @@ public class ZDialog extends JDialog{
 		panTps.setPreferredSize(new Dimension(220, 80));
 		panTps.setBorder(BorderFactory.createTitledBorder("Temps de la simulation"));
 		tpsLabel = new JLabel("En nombre de tours : ");
-		tps = new JTextField("60");
+		tps = new JTextField("5");
 		tps.setPreferredSize(new Dimension(90, 25));
 		panTps.add(tpsLabel);
 		panTps.add(tps);
@@ -223,10 +228,86 @@ public class ZDialog extends JDialog{
 		content.add(ecosysteme);
 		content.add(panTps);
 		content.add(panNbreAnimaux);
+/*
+// 		Animaux et leurs positions
+		nomSimu = (String) nom.getText();
+		environnementChoisi = (String) ecostme.getSelectedItem();
+		if (environnementChoisi.equals("Savane")){
+			Savane sav = new Savane(getTaille());
+			sav.creationGrille();
+			List<Integer> an=new ArrayList<Integer>();
+			ArrayList<List<Integer>> positions=new ArrayList<List<Integer>>();
+			for (int i = 0; i < getAnimauxTot()/3; i++) {
+				boolean nonPositionne=true;
+				while (nonPositionne) {																			// Tant que l'animal n'a pas pu être positionné
+				int x = (int) (getTaille()* Math.random());
+				int y = (int) (getTaille()* Math.random());
+				
+				if (Grille.getCase(x, y).getEstVide() == true && Grille.getCase(x, y).getTypeOccupation()!=2) { // vérifie que la case n'est pas déjà occupée ou remplie par de l'eau
+					Girafe girafe = new Girafe(0, sav.getCase(x, y), true, true, i);
+					girafe.getEmplacement().setEstVide(false);
+					an.add(girafe.getId());
+					List<Integer> position = new ArrayList<Integer>();
+					position.add(girafe.getEmplacement().getX());
+					position.add(girafe.getEmplacement().getY());
+					positions.add(position);
+					nonPositionne=false;}
+				}
+			}
 
+			for (int i = 0; i < getAnimauxTot()/3; i++) {
+				boolean nonPositionne=true;
+				while (nonPositionne) {
+				int x = (int) (getTaille()* Math.random());
+				int y = (int) (getTaille()* Math.random());
+				if (Grille.getCase(x, y).getEstVide() == true && Grille.getCase(x, y).getTypeOccupation()!=2) {
+					Crocodile crocodile = new Crocodile(0, sav.getCase(x, y), true, true, i);
+					crocodile.getEmplacement().setEstVide(false);
+					an.add(crocodile.getId());
+					List<Integer> position = new ArrayList<Integer>();
+					position.add(crocodile.getEmplacement().getX());
+					position.add(crocodile.getEmplacement().getY());
+					positions.add(position);
+					nonPositionne=false;
+				}}
+			}
 
+			for (int i = 0; i < (getAnimauxTot()-(2*getAnimauxTot()/3)); i++) {
+				boolean nonPositionne=true;
+				while (nonPositionne) {
+				int x = (int) (getTaille()* Math.random());
+				int y = (int) (getTaille()* Math.random());
+				if (Grille.getCase(x, y).getEstVide() == true && Grille.getCase(x, y).getTypeOccupation()!=2) {
+					Chacal chacal = new Chacal(0, sav.getCase(x, y), true, true, i);
+					chacal.getEmplacement().setEstVide(false);
+					an.add(chacal.getId());
+					List<Integer> position = new ArrayList<Integer>();
+					position.add(chacal.getEmplacement().getX());
+					position.add(chacal.getEmplacement().getY());
+					positions.add(position);
+					nonPositionne=false;
+				}}
+				
+			}*//*
+			for(Animal animal : an) {
+				animal.seDeplacer((int)getTaille());
+			}*/
+			/*
+			//an.set(0,an.get(0).seDeplacer());
+			JFrame window2 = new JFrame("Simulation d'ecosysteme : " + nomSimu + ", Savane");
+			window2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			window2.getContentPane().add(new AffichageGrille(sav));
+			window2.setBounds(1200,1200,1200,1200);
+			window2.setVisible(true);
+			//Ges.nouveauTour();
+			System.out.println(an);
+			System.out.println(positions);
+			
+		}*/
+		
 		JPanel control = new JPanel();
 		JButton okBouton = new JButton("OK");
+
 
 		/**
 		 * Méthode "écoutant" le clic sur le bouton "ok", pour nous renvoyer les infos et le plateau
@@ -241,47 +322,76 @@ public class ZDialog extends JDialog{
 				JOptionPane jop = new JOptionPane();
 				jop.showMessageDialog(null, zInfo.toString(), "Options choisies", JOptionPane.INFORMATION_MESSAGE);
 				setVisible(false); 
-
+				
+				Gestionnaire Ges = new Gestionnaire();
+// 				Gère l'affichage des environnements et des animaux en fonction
 				if (environnementChoisi.equals("Savane")){
-					Gestionnaire savaneGes = new Gestionnaire();
+					Ges = new Gestionnaire();
 					Savane sav = new Savane(getTaille());
 					sav.creationGrille();
+					ArrayList<Animal> an=new ArrayList<Animal>();
 					for (int i = 0; i < getAnimauxTot()/3; i++) {
+						boolean nonPositionne=true;
+						while (nonPositionne) {																			// Tant que l'animal n'a pas pu être positionné
 						int x = (int) (getTaille()* Math.random());
 						int y = (int) (getTaille()* Math.random());
+						
 						if (Grille.getCase(x, y).getEstVide() == true && Grille.getCase(x, y).getTypeOccupation()!=2) { // vérifie que la case n'est pas déjà occupée ou remplie par de l'eau
 							Girafe girafe = new Girafe(0, sav.getCase(x, y), true, true, i);
 							girafe.getEmplacement().setEstVide(false);
-							savaneGes.addAnimal(girafe);
+							Ges.addAnimal(girafe);
+							an.add(girafe);
+							nonPositionne=false;}
 						}
 					}
 
 					for (int i = 0; i < getAnimauxTot()/3; i++) {
+						boolean nonPositionne=true;
+						while (nonPositionne) {
 						int x = (int) (getTaille()* Math.random());
 						int y = (int) (getTaille()* Math.random());
 						if (Grille.getCase(x, y).getEstVide() == true && Grille.getCase(x, y).getTypeOccupation()!=2) {
 							Crocodile crocodile = new Crocodile(0, sav.getCase(x, y), true, true, i);
 							crocodile.getEmplacement().setEstVide(false);
-							savaneGes.addAnimal(crocodile);
-						}
+							Ges.addAnimal(crocodile);
+							an.add(crocodile);
+							nonPositionne=false;
+						}}
 					}
 
 					for (int i = 0; i < (getAnimauxTot()-(2*getAnimauxTot()/3)); i++) {
+						boolean nonPositionne=true;
+						while (nonPositionne) {
 						int x = (int) (getTaille()* Math.random());
 						int y = (int) (getTaille()* Math.random());
 						if (Grille.getCase(x, y).getEstVide() == true && Grille.getCase(x, y).getTypeOccupation()!=2) {
 							Chacal chacal = new Chacal(0, sav.getCase(x, y), true, true, i);
 							chacal.getEmplacement().setEstVide(false);
-							savaneGes.addAnimal(chacal);
-						}
+							Ges.addAnimal(chacal);
+							an.add(chacal);
+							nonPositionne=false;
+						}}
+						
 					}
 					JFrame window = new JFrame("Simulation d'ecosysteme : " + nomSimu + ", Savane");
 					window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					window.getContentPane().add(new AffichageGrille(sav));
 					window.setBounds(1200,1200,1200,1200);
 					window.setVisible(true);
+					/*
+					for(Animal animal : an) {
+						animal.seDeplacer((int)getTaille());}*/
+					window.repaint(1);
 					
-					savaneGes.jeu();
+					/*
+					//an.set(0,an.get(0).seDeplacer());
+					JFrame window2 = new JFrame("Simulation d'ecosysteme : " + nomSimu + ", Savane");
+					window2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					window2.getContentPane().add(new AffichageGrille(sav));
+					window2.setBounds(1200,1200,1200,1200);
+					window2.setVisible(true);
+					//Ges.nouveauTour();*/
+					
 				}
 
 				if (environnementChoisi.equals("Jungle")){
@@ -289,41 +399,49 @@ public class ZDialog extends JDialog{
 					Jungle jun = new Jungle(getTaille());
 					jun.creationGrille();
 					for (int i = 0; i < getAnimauxTot()/3; i++) {
+						boolean nonPositionne=true;
+						while (nonPositionne) {
 						int x = (int) (getTaille()* Math.random());
 						int y = (int) (getTaille()* Math.random());
 						if (Grille.getCase(x, y).getEstVide() == true && Grille.getCase(x, y).getTypeOccupation()!=2) {
 							Singe singe = new Singe(0, Grille.getCase(x, y), true, true, i);
 							singe.getEmplacement().setEstVide(false);
 							jungleGes.addAnimal(singe);
-						}
+							nonPositionne=false;
+						}}
 					}
 
 					for (int i = 0; i < getAnimauxTot()/3; i++) {
+						boolean nonPositionne=true;
+						while (nonPositionne) {
 						int x = (int) (getTaille()* Math.random());
 						int y = (int) (getTaille()* Math.random());
 						if (Grille.getCase(x, y).getEstVide() == true && Grille.getCase(x, y).getTypeOccupation()!=2) {
 							Ours ours = new Ours(0, Grille.getCase(x, y), true, true, i);
 							ours.getEmplacement().setEstVide(false);
-							jungleGes.addAnimal(ours);
+							jungleGes.addAnimal(ours);}
+							nonPositionne=false;
 						}
 					}
 
 					for (int i = 0; i < getAnimauxTot()/3; i++) {
+						boolean nonPositionne=true;
+						while (nonPositionne) {
 						int x = (int) (getTaille()* Math.random());
 						int y = (int) (getTaille()* Math.random());
 						if (Grille.getCase(x, y).getEstVide() == true && Grille.getCase(x, y).getTypeOccupation()!=2) {
 							Hyene hyene = new Hyene(0, Grille.getCase(x, y), true, true, i);
 							hyene.getEmplacement().setEstVide(false);
 							jungleGes.addAnimal(hyene);
-						}
+							nonPositionne=false;
+						}}
 					}
 					JFrame window = new JFrame("Simulation d'ecosysteme : " + nomSimu + ", Jungle");
 					window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					window.getContentPane().add(new AffichageGrille(jun));
 					window.setBounds(1200,1200,1200,1200);
 					window.setVisible(true);
-					
-					jungleGes.jeu();
+					//jungleGes.jeu();
 				}
 
 				if (environnementChoisi.equals("Sibérie")){
@@ -331,33 +449,42 @@ public class ZDialog extends JDialog{
 					Syberie sib = new Syberie(getTaille());
 					sib.creationGrille();
 					for (int i = 0; i < getAnimauxTot()/3; i++) {
+						boolean nonPositionne=true;
+						while (nonPositionne) {
 						int x = (int) (getTaille()* Math.random());
 						int y = (int) (getTaille()* Math.random());
 						if (Grille.getCase(x, y).getEstVide() == true && Grille.getCase(x, y).getTypeOccupation()!=2) {
 							Mammouth mammouth = new Mammouth(0, Grille.getCase(x, y), true, true, i);
 							mammouth.getEmplacement().setEstVide(false);
 							siberieGes.addAnimal(mammouth);
-						}
+							nonPositionne=false;
+						}}
 					}
 
 					for (int i = 0; i < getAnimauxTot()/3; i++) {
+						boolean nonPositionne=true;
+						while (nonPositionne) {
 						int x = (int) (getTaille()* Math.random());
 						int y = (int) (getTaille()* Math.random());
 						if (Grille.getCase(x, y).getEstVide() == true && Grille.getCase(x, y).getTypeOccupation()!=2) {
 							Tigre tigre = new Tigre(0, Grille.getCase(x, y), true, true, i);
 							tigre.getEmplacement().setEstVide(false);
 							siberieGes.addAnimal(tigre);
-						}
+							nonPositionne=false;
+						}}
 					}
 
 					for (int i = 0; i < getAnimauxTot()/3; i++) {
+						boolean nonPositionne=true;
+						while (nonPositionne) {
 						int x = (int) (getTaille()* Math.random());
 						int y = (int) (getTaille()* Math.random());
 						if (Grille.getCase(x, y).getEstVide() == true && Grille.getCase(x, y).getTypeOccupation()!=2) {
 							Condor condor = new Condor(0, Grille.getCase(x, y), true, true, i);
 							condor.getEmplacement().setEstVide(false);
 							siberieGes.addAnimal(condor);
-						}
+							nonPositionne=false;
+						}}
 					}
 					JFrame window = new JFrame("Simulation d'ecosysteme : " + nomSimu + ", Sibérie");
 					window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -365,7 +492,7 @@ public class ZDialog extends JDialog{
 					window.setBounds(1200,1200,1200,1200);
 					window.setVisible(true);
 					
-					siberieGes.jeu();
+					//siberieGes.jeu();
 				}
 
 				if (environnementChoisi.equals("Montagnes")){
@@ -373,32 +500,41 @@ public class ZDialog extends JDialog{
 					MassifMontagneux massif = new MassifMontagneux(getTaille());
 					massif.creationGrille();
 					for (int i = 0; i < getAnimauxTot()/3; i++) {
+						boolean nonPositionne=true;
+						while (nonPositionne) {
 						int x = (int) (getTaille()* Math.random());
 						int y = (int) (getTaille()* Math.random());
 						if (Grille.getCase(x, y).getEstVide() == true && Grille.getCase(x, y).getTypeOccupation()!=2) {
 							Bouquetin bouquetin = new Bouquetin(0, MassifMontagneux.getCase(x, y), true, true, 10);
 							bouquetin.getEmplacement().setEstVide(false);
 							montagneGes.addAnimal(bouquetin);
-						}
+							nonPositionne=false;
+						}}
 					}
 
 					for (int i = 0; i < getAnimauxTot()/3; i++) {
+						boolean nonPositionne=true;
+						while (nonPositionne) {
 						int x = (int) (getTaille()* Math.random());
 						int y = (int) (getTaille()* Math.random());
 						if (Grille.getCase(x, y).getEstVide() == true && Grille.getCase(x, y).getTypeOccupation()!=2) {
 							Loup loup = new Loup(0, massif.getCase(x, y), true, true, i);
 							loup.getEmplacement().setEstVide(false);
 							montagneGes.addAnimal(loup);
+							nonPositionne=false;}
 						}
 					}
 
 					for (int i = 0; i < getAnimauxTot()/3; i++) {
+						boolean nonPositionne=true;
+						while (nonPositionne) {
 						int x = (int) (getTaille()* Math.random());
 						int y = (int) (getTaille()* Math.random());
 						if (Grille.getCase(x, y).getEstVide() == true && Grille.getCase(x, y).getTypeOccupation()!=2) {
 							Vautour vautour = new Vautour(0, massif.getCase(x, y), true, true, i);
 							vautour.getEmplacement().setEstVide(false);
 							montagneGes.addAnimal(vautour);
+							nonPositionne=false;}
 						}
 					}
 					JFrame window = new JFrame("Simulation d'ecosysteme : " + nomSimu + ", Montagnes");
@@ -408,7 +544,7 @@ public class ZDialog extends JDialog{
 					window.getContentPane().add(new AffichageGrille(massif));
 					window.setBounds(1200,1200,1200,1200);
 					window.setVisible(true);
-					montagneGes.jeu();
+					//montagneGes.jeu();
 				}
 
 				if (environnementChoisi.equals("Steppes")){
@@ -416,29 +552,38 @@ public class ZDialog extends JDialog{
 					Steppe steppe = new Steppe (getTaille());
 					steppe.creationGrille();
 					for (int i = 0; i < getAnimauxTot()/3; i++) {
+						boolean nonPositionne=true;
+						while (nonPositionne) {
 						int x = (int) (getTaille()* Math.random());
 						int y = (int) (getTaille()* Math.random());
 						if (Grille.getCase(x, y).getEstVide() == true && Grille.getCase(x, y).getTypeOccupation()!=2) {
 							Cheval cheval = new Cheval(0, Grille.getCase(x, y), true, true, i);
 							steppeGes.addAnimal(cheval);
+							nonPositionne=false;}
 						}
 					}
 
 					for (int i = 0; i < getAnimauxTot()/3; i++) {
+						boolean nonPositionne=true;
+						while (nonPositionne) {
 						int x = (int) (getTaille()* Math.random());
 						int y = (int) (getTaille()* Math.random());
 						if (Grille.getCase(x, y).getEstVide() == true && Grille.getCase(x, y).getTypeOccupation()!=2) {
 							Renard renard = new Renard(0, Grille.getCase(x, y), true, true, i);
 							steppeGes.addAnimal(renard);
+							nonPositionne=false;}
 						}
 					}
 
 					for (int i = 0; i < getAnimauxTot()/3; i++) {
+						boolean nonPositionne=true;
+						while (nonPositionne) {
 						int x = (int) (getTaille()* Math.random());
 						int y = (int) (getTaille()* Math.random());
 						if (Grille.getCase(x, y).getEstVide() == true && Grille.getCase(x, y).getTypeOccupation()!=2) {
 							Mouche mouche = new Mouche(0, Grille.getCase(x, y), true, true, i);
 							steppeGes.addAnimal(mouche);
+							nonPositionne=false;}
 						}
 					}
 					JFrame window = new JFrame("Simulation d'ecosysteme : " + nomSimu + ", Steppes");
@@ -446,8 +591,9 @@ public class ZDialog extends JDialog{
 					window.getContentPane().add(new AffichageGrille(steppe));
 					window.setBounds(1200,1200,1200,1200);
 					window.setVisible(true);
-					steppeGes.jeu();
+					//steppeGes.jeu();
 				}
+				
 			}
 		});
 
@@ -469,3 +615,4 @@ public class ZDialog extends JDialog{
 	}
 
 }
+	
