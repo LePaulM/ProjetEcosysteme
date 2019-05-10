@@ -23,6 +23,11 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
+/**
+* Première proposition pour créer une classe personnalisée, que nous n'avons finalement pas ajouté à notre projet
+* Ce n'est cependant pas sous cette forme là que nous l'aurions surement gardé. 
+* @author Paul, Armand et Louise
+*/
 public class Personnalise extends JDialog {
 	private boolean sendData;
 	private JLabel nomLabel, tplateauLabel, ecostmeLabel, tpsLabel,tpsLabel2, nbreAnimauxLabel, nbreAnimauxLabel2, icon;
