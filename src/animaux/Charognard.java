@@ -17,7 +17,7 @@ public abstract class Charognard extends Animal {
 	 * @param aProcree : Indique si l'animal s'est reproduit il y a un certain nombre de tours
 	 * @param meurtFaim : indique si l'animal est en état de famine
 	 */
-	public Charognard(int dateNaissance, Case emplacement, boolean maturite, boolean aProcree, int meurtFaim) {
+	public Charognard(int dateNaissance, Case emplacement,  boolean aProcree, int meurtFaim) {
 		super(dateNaissance,emplacement, aProcree,meurtFaim);
 	}
 

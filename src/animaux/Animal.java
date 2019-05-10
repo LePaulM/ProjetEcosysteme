@@ -86,7 +86,7 @@ public abstract class Animal {
 	 * @param aProcree : si l'animal a procréé récemment 
 	 * @param meurtFaim : Indique le nombre de tours restants lorsque l'animal est en état de famine
 	 */
-	public Animal(int dateNaissance, Case emplacement, boolean maturite, boolean aProcree, int meurtFaim) {
+	public Animal(int dateNaissance, Case emplacement, boolean aProcree, int meurtFaim) {
 		this.id = Gestionnaire.getAnimaux().size() + 1;
 		this.dateNaissance = dateNaissance;
 		this.emplacement = emplacement;
