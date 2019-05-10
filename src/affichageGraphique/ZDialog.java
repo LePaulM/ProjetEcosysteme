@@ -355,7 +355,7 @@ public class ZDialog extends JDialog{
 							crocodile.getEmplacement().setEstVide(false);
 							Ges.addAnimal(crocodile);
 							an.add(crocodile);
-							nonPositionne=false;
+							nonPositionne = false;
 						}}
 					}
 
@@ -369,7 +369,7 @@ public class ZDialog extends JDialog{
 							chacal.getEmplacement().setEstVide(false);
 							Ges.addAnimal(chacal);
 							an.add(chacal);
-							nonPositionne=false;
+							nonPositionne = false;
 						}}
 						
 					}
@@ -378,10 +378,18 @@ public class ZDialog extends JDialog{
 					window.getContentPane().add(new AffichageGrille(sav));
 					window.setBounds(1200,1200,1200,1200);
 					window.setVisible(true);
-					/*
+					//System.out.println(an);
+					
 					for(Animal animal : an) {
-						animal.seDeplacer((int)getTaille());}*/
-					window.repaint(1);
+						//System.out.println("coucou");
+						animal.seDeplacer((int)getTaille());
+						}
+					
+					window.repaint();
+					/*
+					Chacal chacal = new Chacal(0, sav.getCase(1, 1), true, true, 11);
+					chacal.getEmplacement().setEstVide(false);*/
+					//window.getContentPane().add(new AffichageGrille(sav));
 					
 					/*
 					//an.set(0,an.get(0).seDeplacer());
@@ -407,7 +415,7 @@ public class ZDialog extends JDialog{
 							Singe singe = new Singe(0, Grille.getCase(x, y), true, true, i);
 							singe.getEmplacement().setEstVide(false);
 							jungleGes.addAnimal(singe);
-							nonPositionne=false;
+							nonPositionne = false;
 						}}
 					}
 
