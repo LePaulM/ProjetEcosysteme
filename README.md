@@ -23,7 +23,7 @@ Ensuite lancez le main situé dans gestion.
 Vous pouvez ensuite choisir les différents paramètres et observer votre simulation.
 
 ## <a name="exemples"></a> Exemples
-Voici quelques images de notre application ![Panneau d'entrée](/relative/path/to/img.jpg?raw=true "Optional Title")
+Voici quelques images de notre application ![Panneau d'entrée](ressources/Captures/Capture du 2019-05-10 17-48-19.png?raw=true "Optional Title")
 
 ## <a name="maj"></a> Mises à jour à prévoir
 Dans l'avenir nous aimerions ajouter les élements suivants à notre application:
