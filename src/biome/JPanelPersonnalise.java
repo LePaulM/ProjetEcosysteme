@@ -9,32 +9,59 @@ import javax.swing.JPanel;
 
 import affichageGraphique.ZDialog;
 
+/** 
+ * Classe définissant les images associées à chaque animal
+ * @author Paul, Armand et Louise
+ *
+ */
 public class JPanelPersonnalise extends JPanel {
+	/**
+	 * Grille sur laquelle est positionné l'ecosystème sans les animaux
+	 */
 	private Grille grille;
+	/**
+	 * Position de l'animal en abscisse
+	 */
 	private int x;
+	/**
+	 * Position de l'animal en ordonnée
+	 */
 	private int y;
 
+	/**
+	 * Constructeur
+	 * @param grille : Grille sur laquelle est positionné l'ecosystème sans les animaux
+	 * @param x : Position de l'animal en abscisse
+	 * @param y : Position de l'animal en ordonnée
+	 */
 	public JPanelPersonnalise(Grille grille, int  x, int y) {
 		this.grille = grille;
 		this.x = x;
 		this.y = y;
 	}
+	
+	/**
+	 * Récupération des images
+	 */
+	ImageIcon bouquetin = new ImageIcon("/home/formation/eclipse-workspace/ProjetEcosysteme-master(1)/ProjetEcosysteme-master/ressources/bouquetin.png");
+	ImageIcon chacal = new ImageIcon("/home/formation/eclipse-workspace/ProjetEcosysteme-master(1)/ProjetEcosysteme-master/ressources/chacal.png");
+	ImageIcon cheval = new ImageIcon("/home/formation/eclipse-workspace/ProjetEcosysteme-master(1)/ProjetEcosysteme-master/ressources/cheval.png");
+	ImageIcon crocodile = new ImageIcon("/home/formation/eclipse-workspace/ProjetEcosysteme-master(1)/ProjetEcosysteme-master/ressources/crocodile.png");
+	ImageIcon girafe = new ImageIcon("/home/formation/eclipse-workspace/ProjetEcosysteme-master(1)/ProjetEcosysteme-master/ressources/girafe.png");
+	ImageIcon hyene = new ImageIcon("/home/formation/eclipse-workspace/ProjetEcosysteme-master(1)/ProjetEcosysteme-master/ressources/hyene.png");
+	ImageIcon loup = new ImageIcon("/home/formation/eclipse-workspace/ProjetEcosysteme-master(1)/ProjetEcosysteme-master/ressources/loup.png");
+	ImageIcon mammouth = new ImageIcon("/home/formation/eclipse-workspace/ProjetEcosysteme-master(1)/ProjetEcosysteme-master/ressources/mammouth.png");
+	ImageIcon mouche = new ImageIcon("/home/formation/eclipse-workspace/ProjetEcosysteme-master(1)/ProjetEcosysteme-master/ressources/mouche.png");
+	ImageIcon ours = new ImageIcon("/home/formation/eclipse-workspace/ProjetEcosysteme-master(1)/ProjetEcosysteme-master/ressources/ours.png");
+	ImageIcon renard = new ImageIcon("/home/formation/eclipse-workspace/ProjetEcosysteme-master(1)/ProjetEcosysteme-master/ressources/renard.png");
+	ImageIcon singe = new ImageIcon("/home/formation/eclipse-workspace/ProjetEcosysteme-master(1)/ProjetEcosysteme-master/ressources/singe.png");
+	ImageIcon tigre = new ImageIcon("/home/formation/eclipse-workspace/ProjetEcosysteme-master(1)/ProjetEcosysteme-master/ressources/tigre.png");
+	ImageIcon vautour = new ImageIcon("/home/formation/eclipse-workspace/ProjetEcosysteme-master(1)/ProjetEcosysteme-master/ressources/vautour.png");
 
-	ImageIcon bouquetin = new ImageIcon("ressources/bouquetin.png");
-	ImageIcon chacal = new ImageIcon("ressources/chacal.png");
-	ImageIcon cheval = new ImageIcon("ressources/cheval.png");
-	ImageIcon crocodile = new ImageIcon("ressources/crocodile.png");
-	ImageIcon girafe = new ImageIcon("ressources/girafe.png");
-	ImageIcon hyene = new ImageIcon("ressources/hyene.png");
-	ImageIcon loup = new ImageIcon("ressources/loup.png");
-	ImageIcon mammouth = new ImageIcon("ressources/mammouth.png");
-	ImageIcon mouche = new ImageIcon("ressources/mouche.png");
-	ImageIcon ours = new ImageIcon("ressources/ours.png");
-	ImageIcon renard = new ImageIcon("ressources/renard.png");
-	ImageIcon singe = new ImageIcon("ressources/singe.png");
-	ImageIcon tigre = new ImageIcon("ressources/tigre.png");
-	ImageIcon vautour = new ImageIcon("ressources/vautour.png");
-
+	/**
+	 * Setters
+	 * @param x
+	 */
 	public void setX(int x){
 		this.x = x;
 	}
@@ -43,6 +70,9 @@ public class JPanelPersonnalise extends JPanel {
 		this.y = y;
 	}
 
+	/**
+	 * Méthode affichant l'image correspondante pour chaque animal
+	 */
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -55,6 +85,7 @@ public class JPanelPersonnalise extends JPanel {
 				g2d.drawImage(bouquetinImaged, 0, 0, tailleCaseEnPixel, tailleCaseEnPixel, null);
 			}
 			if (Grille.getCase(x, y).getAnimal().getEspece().equals("Chacal")) {
+
 				Image chacalImaged = chacal.getImage();
 				g2d.drawImage(chacalImaged, 0, 0, tailleCaseEnPixel, tailleCaseEnPixel, null);
 			}
@@ -73,6 +104,7 @@ public class JPanelPersonnalise extends JPanel {
 			if (Grille.getCase(x, y).getAnimal().getEspece().equals("Hyene")) {
 				Image hyeneImaged = hyene.getImage();
 				g2d.drawImage(hyeneImaged, 0, 0, tailleCaseEnPixel, tailleCaseEnPixel, null);
+				
 			}
 			if (Grille.getCase(x, y).getAnimal().getEspece().equals("Loup")) {
 				Image loupImaged = loup.getImage();

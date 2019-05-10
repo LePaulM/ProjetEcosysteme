@@ -7,10 +7,22 @@ import javax.swing.JPanel;
 
 import biome.Grille;
 
+/**
+ * Classe permettant d'afficher la grille
+ * @author Paul,Armand et Louise
+ *
+ */
 public class AffichageGrille extends JPanel {
 
+	/**
+	 * buttons permettra de représenter les animaux grâce à la classe JPanelPersonnalise
+	 */
 	private JPanelPersonnalise[] buttons;
 
+	/**
+	 * Constructeur
+	 * @param grille : grille sous forme matricielle remplie de int
+	 */
 	public AffichageGrille(Grille grille)  {
 		System.out.println(grille.toString());
 		setLayout(new GridLayout(grille.getTaille(),grille.getTaille()));
@@ -64,12 +76,7 @@ public class AffichageGrille extends JPanel {
 				}
 				if (occupation == 7) {					
 					buttons[j].setBackground(montagne);
-					//System.out.println(i);
 				}
-				//} //else {
-				//buttons[j] = new JPanelPersonnalise(grille);
-				//buttons[j].toString();
-				//}
 
 				add(buttons[j]); 
 				//adds this button to JPanel (note: no need for JPanel.add(...)
