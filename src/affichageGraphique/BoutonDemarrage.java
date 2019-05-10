@@ -12,7 +12,7 @@ import gestion.Gestionnaire;
 
 /**
 * Cette Classe gère le bouton de démarrage
-*
+* @author Paul, Armand et Louise
 */
 public class BoutonDemarrage extends JFrame{
 	private JPanel pan = new JPanel();
