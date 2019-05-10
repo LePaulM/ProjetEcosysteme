@@ -39,7 +39,7 @@ public class JPanelPersonnalise extends JPanel {
 		this.x = x;
 		this.y = y;
 	}
-	
+
 	/**
 	 * Récupération des images
 	 */
@@ -79,9 +79,9 @@ public class JPanelPersonnalise extends JPanel {
 		Graphics2D g2d = (Graphics2D) g;
 
 		int tailleCaseEnPixel = 1200 / ZDialog.getTaille();
-		//System.out.println(Grille.getCase(x, y).getEstVide());
+		
 		if(Grille.getCase(x, y).getEstVide() == false) {
-			//System.out.println("2"+Grille.getCase(x, y).getAnimal());
+			System.out.println("2"+Grille.getCase(x, y).getAnimal());
 			//System.out.println("1"+Grille.getCase(x, y).getAnimal().getClass());
 			if (Grille.getCase(x, y).getAnimal().getEspece().equals("Bouquetin")) {
 				Image bouquetinImaged = bouquetin.getImage();
@@ -106,7 +106,7 @@ public class JPanelPersonnalise extends JPanel {
 			if (Grille.getCase(x, y).getAnimal().getEspece().equals("Hyene")) {
 				Image hyeneImaged = hyene.getImage();
 				g2d.drawImage(hyeneImaged, 0, 0, tailleCaseEnPixel, tailleCaseEnPixel, null);
-				
+
 			}
 			if (Grille.getCase(x, y).getAnimal().getEspece().equals("Loup")) {
 				Image loupImaged = loup.getImage();

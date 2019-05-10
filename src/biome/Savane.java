@@ -65,13 +65,18 @@ public class Savane extends Grille{
 			
 	}
 	
+	/**
+	 * Méthode permettant de créer de la neige
+	 */
 	@Override
 	public void creationNeige() {
 		// TODO Auto-generated method stub
 		//		Methode vide car il n'y a pas de neige dans la savane
 	}
 
-
+	/**
+	 * Méthode permettant de créer des montagnes
+	 */
 	@Override
 	public void creationMontagne() {
 		// TODO Auto-generated method stub
