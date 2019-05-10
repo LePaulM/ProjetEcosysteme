@@ -11,10 +11,12 @@ import affichageGraphique.Fenetre;
  */
 public class Main {
 	public static void main(String[] args) {
-
+		
 		Fenetre fen = new Fenetre();
+		
+		/*
 		Gestionnaire ges=new Gestionnaire();
-		ges.jeu();
+		ges.jeu();*/
 		
 	}
 }

@@ -64,13 +64,12 @@ public class Gestionnaire {
 	/**
 	 * 
 	 */
-	public void jeu() {
+	public void jeu(int tailleGrille) {
 		for (int i = 0; i >= Integer.parseInt(ZDialog.getTps()); i++) {
-
-			System.out.println("dfger");
+			
 			TimerTask task = new TimerTask() {
 				public void run() { 
-					Gestionnaire.nouveauTour();
+					Gestionnaire.nouveauTour(tailleGrille);
 				};
 			};
 			Timer timer = new Timer(); 
@@ -82,24 +81,27 @@ public class Gestionnaire {
 	/**
 	 * Méthode créant un nouveau tour et appelant toutes les méthodes avec les actions des animaux
 	 */
-	public static void nouveauTour() {
+	public static void nouveauTour(int tailleGrille) {
 		tour = tour++;
-		for (Animal animal : animaux) {							// pour chaque animal présent dans la simulation
+		for (Animal animal : animaux) {	
+			animal.seDeplacer(tailleGrille);/*					// pour chaque animal présent dans la simulation
 			if (animal.getEstVivant() == false){				// si l'animal est decedé,
 				animal.seDecomposer();							// on applique la fonction seDecomposer()
 				continue;										// et on termine le tour de l'animal
 			}
 			else {												// sinon,
-				if (animal.getEsperanceVie() <= tour - animal.getDateNaissance() || animal.famine() == true ) {	//si l'animal a atteint son esperance de vie, ou si il est en famine avancée
+				if (animal.getEsperanceVie() <= (tour - animal.getDateNaissance()) ) {	//si l'animal a atteint son esperance de vie, ou si il est en famine avancée
 					animal.decede();												// il décede
 					continue;												// et on termine le tour de l'animal
-				}else {														//sinon,
-					animal.seDeplacer();											// l'animal se déplace,
+				}else {													//sinon,
+					
+															// l'animal se déplace,
 					animal.seNourrir();											// se nourrit si il le peut
 					animal.seReproduire();										// et se reproduit si il le peut
 				}
 			}
 
-		}		
+		}*/
+	}
 	}
 }
