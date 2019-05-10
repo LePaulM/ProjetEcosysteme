@@ -3,11 +3,11 @@ package affichageGraphique;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -53,6 +53,7 @@ import gestion.Gestionnaire;
  */
 public class ZDialog extends JDialog{
 	private ZDialogInfo zInfo = new ZDialogInfo();
+	private BoutonDemarrage demarrage = new BoutonDemarrage();
 	//private Personnalise perso = new Personnalise("Personnalisé"); // Pour la choix personnalisé qui n'a pas eu le temps d'être développé
 	private boolean sendData;
 	private JLabel nomLabel, tplateauLabel, ecostmeLabel, tpsLabel,tpsLabel2, nbreAnimauxLabel, nbreAnimauxLabel2, icon;
@@ -68,6 +69,7 @@ public class ZDialog extends JDialog{
 	private int nbrTotAnimaux;
 	private static String nbrAnimauxString;
 	private JPanel[] buttons;
+	private JButton bouton = new JButton("Démarrer !");
 
 
 	public JComboBox getEcostme() {
@@ -98,6 +100,17 @@ public class ZDialog extends JDialog{
 		this.setVisible(true);      
 		return this.zInfo;      
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public BoutonDemarrage showDemarre(){
+		this.sendData = false;
+		this.setVisible(true);      
+		return this.demarrage;      
+	}
+	
 	
 	/**
 	 * Pour le choix personnalisé, qui n'a pas eu le temps d'être développé jusqu'au bout
@@ -141,6 +154,20 @@ public class ZDialog extends JDialog{
 			return getTaille()*getTaille()/2;
 		} else {
 			return Integer.parseInt(getNbreAnimaux());
+		}
+	}
+
+	public void jeu(int tailleGrille) {
+		for (int i = 0; i >= Integer.parseInt(ZDialog.getTps()); i++) {
+			
+			TimerTask task = new TimerTask() {
+				public void run() { 
+					Gestionnaire.nouveauTour(tailleGrille);
+				};
+			};
+			Timer timer = new Timer(); 
+			timer.scheduleAtFixedRate( task,0, 1000); //ce bout de code sert à mettre un timer pour que le tour passe au suivant automatiquement
+
 		}
 	}
 
@@ -228,6 +255,8 @@ public class ZDialog extends JDialog{
 		content.add(ecosysteme);
 		content.add(panTps);
 		content.add(panNbreAnimaux);
+		
+		
 /*
 // 		Animaux et leurs positions
 		nomSimu = (String) nom.getText();
@@ -319,6 +348,8 @@ public class ZDialog extends JDialog{
 				environnementChoisi = (String) ecostme.getSelectedItem();
 				zInfo = new ZDialogInfo(nom.getText(), (String)tplateau.getSelectedItem(),(String)ecostme.getSelectedItem(), getNbreAnimaux(),getTps());
 				showZDialogI();
+				demarrage=new BoutonDemarrage();
+				showDemarre();
 				JOptionPane jop = new JOptionPane();
 				jop.showMessageDialog(null, zInfo.toString(), "Options choisies", JOptionPane.INFORMATION_MESSAGE);
 				setVisible(false); 
@@ -380,12 +411,29 @@ public class ZDialog extends JDialog{
 					window.setVisible(true);
 					//System.out.println(an);
 					
+					
+					for (int i = 0; i >= Integer.parseInt(ZDialog.getTps()); i++) {
+						
+						//TimerTask task = new TimerTask() {
+							//public void run() { 
+								Gestionnaire.nouveauTour(getTaille());
+								window.getContentPane().add(new AffichageGrille(sav));
+								
+								System.out.println("coucou");
+							//};
+						//};
+						//Timer timer = new Timer(); 
+						//timer.scheduleAtFixedRate( task,0, 1000); //ce bout de code sert à mettre un timer pour que le tour passe au suivant automatiquement
+
+					}
+					
 					for(Animal animal : an) {
 						//System.out.println("coucou");
 						animal.seDeplacer((int)getTaille());
+						window.repaint();
 						}
 					
-					window.repaint();
+					
 					/*
 					Chacal chacal = new Chacal(0, sav.getCase(1, 1), true, true, 11);
 					chacal.getEmplacement().setEstVide(false);*/
@@ -416,7 +464,8 @@ public class ZDialog extends JDialog{
 							singe.getEmplacement().setEstVide(false);
 							jungleGes.addAnimal(singe);
 							nonPositionne = false;
-						}}
+						}
+						}
 					}
 
 					for (int i = 0; i < getAnimauxTot()/3; i++) {
@@ -545,8 +594,8 @@ public class ZDialog extends JDialog{
 							nonPositionne=false;}
 						}
 					}
-					JFrame window = new JFrame("Simulation d'ecosysteme : " + nomSimu + ", Montagnes");
 					
+					JFrame window = new JFrame("Simulation d'ecosysteme : " + nomSimu + ", Montagnes");
 					
 					window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					window.getContentPane().add(new AffichageGrille(massif));

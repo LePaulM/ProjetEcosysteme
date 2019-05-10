@@ -32,9 +32,6 @@ public class Condor extends Charognard{
 		esperanceVie = 40;
 		esperanceVie = esperanceVie + (int)(Math.random() * this.esperanceVie/5);
 
-		// le condor a acces à la forêt
-		accesForet = true;
-
 		//	le condor a une vitesse de 2
 		vitesse = 4;
 		

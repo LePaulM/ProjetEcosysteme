@@ -38,20 +38,15 @@ public class AffichageGrille extends JPanel {
 		Color terrainNu = new Color(167, 103, 38, 250);
 		Color montagne = new Color(132, 132, 132, 250);
 
+		// création de la partie graphique des case : ce sont des JPanel 
+		// on leur affecte une valeur en fonction du type d'occupation
 		for(int i = 0; i <= grille.getTaille()-1; i++)
 		{
 			for(int j = 0; j <= grille.getTaille()-1; j++)
 			{
 				int occupation = grille.getCase(i,j).getTypeOccupation();
 
-				//if (grille.getCase(i, j).getEstVide() == true) {
-				
-				//System.out.println(grille.getCase(i, j).getEstVide() == false);
-
 				buttons[j] = new JPanelPersonnalise(grille, i, j);
-				
-				//buttons[j].setX(i);
-				//buttons[j].setY(j);
 
 				if (occupation == 0) {
 					buttons[j].setBackground(herbe);

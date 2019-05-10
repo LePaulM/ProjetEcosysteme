@@ -35,9 +35,6 @@ public class Hyene extends Charognard{
 		this.esperanceVie = 12;
 		esperanceVie = esperanceVie + (int)(Math.random() * this.esperanceVie/5);
 
-		// la hyene a accès a la forêt
-		this.accesForet = true;
-
 		//la hyene a une vitesse de 3
 		this.vitesse = 3;
 		

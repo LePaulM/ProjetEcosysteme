@@ -33,9 +33,6 @@ public class Crocodile extends Carnivore{
 		this.esperanceVie = 70;
 		esperanceVie = esperanceVie + (int)(Math.random() * this.esperanceVie/5);
 
-		// le crocodile a accès aux cases de forêt
-		accesForet = true;
-
 		// le crocodile a une vitesse de 1
 		vitesse = 1;
 		

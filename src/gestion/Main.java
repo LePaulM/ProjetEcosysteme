@@ -1,6 +1,5 @@
 package gestion;
-import java.util.Timer;
-import java.util.TimerTask;
+import javax.swing.JButton;
 
 import affichageGraphique.Fenetre;
 
@@ -12,7 +11,6 @@ import affichageGraphique.Fenetre;
 public class Main {
 	public static void main(String[] args) {
 		Fenetre fen = new Fenetre();
-		
 		
 		/*
 		Gestionnaire ges=new Gestionnaire();

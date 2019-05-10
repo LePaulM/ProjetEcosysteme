@@ -33,9 +33,6 @@ public class Girafe extends Herbivore{
 		esperanceVie = 20;
 		esperanceVie = esperanceVie + (int)(Math.random() * this.esperanceVie/5);
 
-		// la girafe a accès aux cases de forêt
-		accesForet = true;
-
 		// la girafe a une vitesse de 3
 		vitesse = 3;
 		

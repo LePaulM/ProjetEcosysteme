@@ -37,9 +37,6 @@ public class Bouquetin extends Herbivore {
 		this.esperanceVie=20;
 		esperanceVie=esperanceVie + (int)(Math.random() * this.esperanceVie/5);
 
-		// le bouquetin a acces à la forêt
-		accesForet=true;
-
 		// le bouquetin a une vitesse de 4
 		vitesse=4;
 

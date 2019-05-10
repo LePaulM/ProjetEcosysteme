@@ -36,9 +36,6 @@ public class Mammouth extends Herbivore{
 		esperanceVie = 50;
 		esperanceVie = esperanceVie + (int)(Math.random() * this.esperanceVie/5);
 
-		// le mammouth a accès aux cases de foret
-		accesForet = true;
-
 		// le mammouth a une vitesse de 4
 		vitesse = 1;
 

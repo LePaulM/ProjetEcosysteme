@@ -33,9 +33,6 @@ public class Cheval extends Herbivore{
 		esperanceVie = 25;
 		esperanceVie = esperanceVie +(int)(Math.random() * this.esperanceVie/5);
 
-		// le chacal a acces à la forêt
-		accesForet = false;
-
 		//	le chacal a une vitesse de 2
 		vitesse = 6;
 		

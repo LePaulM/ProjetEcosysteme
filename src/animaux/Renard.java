@@ -36,9 +36,6 @@ public class Renard extends Carnivore{
 		esperanceVie = 4;
 		esperanceVie = esperanceVie + (int)(Math.random() * this.esperanceVie/4);
 
-		// le renard a accès aux cases de foret
-		accesForet = true;
-
 		// le renard a une vitesse de 4
 		vitesse = 4;
 		

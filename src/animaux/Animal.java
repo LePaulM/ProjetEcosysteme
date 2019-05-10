@@ -27,11 +27,6 @@ public abstract class Animal {
 	private int dateDeces;
 
 	/**
-	 * Si l'animal peut accéder à la foret
-	 */
-	protected boolean accesForet;
-
-	/**
 	 * Valeur indiquant l'age jusqu'auquel l'animal peut vivre 
 	 */
 	protected int esperanceVie;
@@ -247,7 +242,7 @@ public abstract class Animal {
 	public void seDeplacer(int tailleGrille) {
 		int direction=(int)(Math.random() * 9);	// on choisit un nombre entre 1 et 9 qui determinera quelle direction suivra l'animal
 		Case caseSuivante; 
-		if (direction == 1) {
+		if (direction == 1 ) {
 			if(this.getEmplacement().getX() - this.vitesse < 0 && this.getEmplacement().getY() + this.vitesse>(tailleGrille-1)) {
 				caseSuivante=Grille.getCase(this.getEmplacement().getX()+tailleGrille-this.vitesse,this.getEmplacement().getY()-tailleGrille+ this.vitesse);
 			}
@@ -260,15 +255,16 @@ public abstract class Animal {
 			else {
 				caseSuivante = Grille.getCase(this.getEmplacement().getX() - this.vitesse, this.getEmplacement().getY() + this.vitesse);
 			}
-			
+
 			if(caseSuivante.getEstVide() == false) {
 				this.seDeplacer(tailleGrille);
 			}
-			Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()).setEstVide(true);
-			this.setEmplacement(caseSuivante);
-			caseSuivante.setEstVide(false);
-			
-			
+			if (caseSuivante.getTypeOccupation() != 2) {
+				this.emplacement.setEstVide(true);
+				//Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()).setEstVide(true);
+				this.setEmplacement(caseSuivante);
+				caseSuivante.setEstVide(false);
+			}
 		}
 
 		if(direction==2) {
@@ -284,14 +280,16 @@ public abstract class Animal {
 			else {
 				caseSuivante = Grille.getCase(this.getEmplacement().getX() - this.vitesse, this.getEmplacement().getY() + this.vitesse);
 			}
-			
+
 			if(caseSuivante.getEstVide() == false) {
 				this.seDeplacer(tailleGrille);
 			}
-			Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()).setEstVide(true);
-			this.setEmplacement(caseSuivante);
-			caseSuivante.setEstVide(false);
-			
+			if (caseSuivante.getTypeOccupation() != 2) {
+				this.emplacement.setEstVide(true);
+				//Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()).setEstVide(true);
+				this.setEmplacement(caseSuivante);
+				caseSuivante.setEstVide(false);
+			}
 		}
 
 		if(direction==3) {
@@ -307,14 +305,17 @@ public abstract class Animal {
 			else {
 				caseSuivante = Grille.getCase(this.getEmplacement().getX() - this.vitesse, this.getEmplacement().getY() + this.vitesse);
 			}
-			
+
 			if(caseSuivante.getEstVide() == false) {
 				this.seDeplacer(tailleGrille);
 			}
-			Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()).setEstVide(true);
-			this.setEmplacement(caseSuivante);
-			caseSuivante.setEstVide(false);
-			
+			if (caseSuivante.getTypeOccupation() != 2) {
+				this.emplacement.setEstVide(true);
+				//Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()).setEstVide(true);
+				this.setEmplacement(caseSuivante);
+				caseSuivante.setEstVide(false);
+			}
+
 		}
 
 		if(direction==4) {
@@ -330,21 +331,23 @@ public abstract class Animal {
 			else {
 				caseSuivante = Grille.getCase(this.getEmplacement().getX() - this.vitesse, this.getEmplacement().getY() + this.vitesse);
 			}
-			
+
 			if(caseSuivante.getEstVide() == false) {
 				this.seDeplacer(tailleGrille);
 			}
-			Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()).setEstVide(true);
-			this.setEmplacement(caseSuivante);
-			caseSuivante.setEstVide(false);
-			
+			if (caseSuivante.getTypeOccupation() != 2) {
+				this.emplacement.setEstVide(true);
+				//Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()).setEstVide(true);
+				this.setEmplacement(caseSuivante);
+				caseSuivante.setEstVide(false);
+			}
 		}
 		if(direction==5) {
-			if(this.getEmplacement().getX() - this.vitesse<0 && this.getEmplacement().getY() + this.vitesse>(tailleGrille-1)) {
-				caseSuivante=Grille.getCase(this.getEmplacement().getX()+tailleGrille-this.vitesse,this.getEmplacement().getY()-tailleGrille+ this.vitesse);
+			if(this.getEmplacement().getX() - this.vitesse < 0 && this.getEmplacement().getY() + this.vitesse > (tailleGrille-1)) {
+				caseSuivante = Grille.getCase(this.getEmplacement().getX()+tailleGrille-this.vitesse,this.getEmplacement().getY()-tailleGrille+ this.vitesse);
 			}
 			else if (this.getEmplacement().getX() - this.vitesse<0) {
-				caseSuivante=Grille.getCase(this.getEmplacement().getX()+tailleGrille-this.vitesse,this.getEmplacement().getY() + this.vitesse);
+				caseSuivante = Grille.getCase(this.getEmplacement().getX()+tailleGrille-this.vitesse,this.getEmplacement().getY() + this.vitesse);
 			}
 			else if (this.getEmplacement().getY() + this.vitesse>(tailleGrille-1)){
 				caseSuivante = Grille.getCase(this.getEmplacement().getX() - this.vitesse, this.getEmplacement().getY()-tailleGrille + this.vitesse);
@@ -352,14 +355,17 @@ public abstract class Animal {
 			else {
 				caseSuivante = Grille.getCase(this.getEmplacement().getX() - this.vitesse, this.getEmplacement().getY() + this.vitesse);
 			}
-			
+
 			if(caseSuivante.getEstVide() == false) {
 				this.seDeplacer(tailleGrille);
 			}
-			Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()).setEstVide(true);
-			this.setEmplacement(caseSuivante);
-			caseSuivante.setEstVide(false);
-			
+			if (caseSuivante.getTypeOccupation() != 2) {
+				this.emplacement.setEstVide(true);
+				//Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()).setEstVide(true);
+				this.setEmplacement(caseSuivante);
+				caseSuivante.setEstVide(false);
+			}
+
 		}
 
 		if (direction==6) {
@@ -375,14 +381,17 @@ public abstract class Animal {
 			else {
 				caseSuivante = Grille.getCase(this.getEmplacement().getX() - this.vitesse, this.getEmplacement().getY() + this.vitesse);
 			}
-			
+
 			if(caseSuivante.getEstVide() == false) {
 				this.seDeplacer(tailleGrille);
 			}
-			Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()).setEstVide(true);
-			this.setEmplacement(caseSuivante);
-			caseSuivante.setEstVide(false);
-			
+			if (caseSuivante.getTypeOccupation() != 2) {
+				this.emplacement.setEstVide(true);
+				//Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()).setEstVide(true);
+				this.setEmplacement(caseSuivante);
+				caseSuivante.setEstVide(false);
+			}
+
 		}
 
 		if(direction==7) {
@@ -398,14 +407,17 @@ public abstract class Animal {
 			else {
 				caseSuivante = Grille.getCase(this.getEmplacement().getX() - this.vitesse, this.getEmplacement().getY() + this.vitesse);
 			}
-			
+
 			if(caseSuivante.getEstVide() == false) {
 				this.seDeplacer(tailleGrille);
 			}
-			Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()).setEstVide(true);
-			this.setEmplacement(caseSuivante);
-			caseSuivante.setEstVide(false);
-			
+			if (caseSuivante.getTypeOccupation() != 2) {
+				this.emplacement.setEstVide(true);
+				//Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()).setEstVide(true);
+				this.setEmplacement(caseSuivante);
+				caseSuivante.setEstVide(false);
+			}
+
 		}
 
 		if(direction==8) {
@@ -421,13 +433,16 @@ public abstract class Animal {
 			else {
 				caseSuivante = Grille.getCase(this.getEmplacement().getX() - this.vitesse, this.getEmplacement().getY() + this.vitesse);
 			}
-			
+
 			if(caseSuivante.getEstVide() == false) {
 				this.seDeplacer(tailleGrille);
 			}
-			Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()).setEstVide(true);
-			this.setEmplacement(caseSuivante);
-			caseSuivante.setEstVide(false);
+			if (caseSuivante.getTypeOccupation() != 2) {
+				this.emplacement.setEstVide(true);
+				//Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()).setEstVide(true);
+				this.setEmplacement(caseSuivante);
+				caseSuivante.setEstVide(false);
+			}
 		}
 		//ArrayList position=(caseSuivante.getX(),caseSuivante.getY());
 	}
@@ -450,7 +465,7 @@ public abstract class Animal {
 				famine=true;				        // cette fonction renvoie true et il mourra au prochain tour
 			}					
 			else {
-				famine=false;} // sinon on passe à la suite du tour
+				famine=false;} 						// sinon on passe à la suite du tour
 		}
 		return famine;
 	}

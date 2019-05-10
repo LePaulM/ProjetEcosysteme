@@ -36,9 +36,6 @@ public class Chacal extends Charognard {
 		esperanceVie = 12;
 		esperanceVie = esperanceVie + (int)(Math.random() * this.esperanceVie/5);
 
-		// le chacal a acces à la forêt
-		accesForet = true;
-
 		//	le chacal a une vitesse de 2
 		vitesse = 2;
 		

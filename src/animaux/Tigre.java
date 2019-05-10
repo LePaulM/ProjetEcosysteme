@@ -36,9 +36,6 @@ public class Tigre extends Charognard{
 		esperanceVie = 16;
 		esperanceVie = esperanceVie + (int)(Math.random() * this.esperanceVie/5);
 
-		// le tigre a accès aux cases de foret
-		accesForet = true;
-
 		// le tigre a une vitesse de 4
 		vitesse = 4;
 		

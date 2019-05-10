@@ -35,9 +35,6 @@ public class Singe extends Charognard{
 		esperanceVie = 20;
 		esperanceVie = esperanceVie + (int)(Math.random() * this.esperanceVie/5);
 
-		// le renard a accès aux cases de foret
-		accesForet = true;
-
 		// le renard a une vitesse de 4
 		vitesse = 2;
 		

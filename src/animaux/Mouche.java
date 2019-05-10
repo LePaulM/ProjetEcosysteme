@@ -36,9 +36,6 @@ public class Mouche extends Charognard{
 		esperanceVie = 5;
 		esperanceVie = esperanceVie + (int)(Math.random() * this.esperanceVie/5);
 
-		// la mouche a accès aux cases de foret
-		accesForet = true;
-
 		// la mouche a une vitesse de 2
 		vitesse = 2;
 

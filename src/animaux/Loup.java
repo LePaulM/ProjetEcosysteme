@@ -35,9 +35,6 @@ public class Loup extends Carnivore{
 		esperanceVie = 7;
 		esperanceVie = esperanceVie + (int)(Math.random() * this.esperanceVie/5);
 
-		// le loup a accès aux cases de foret
-		accesForet = true;
-
 		// le loup a une vitesse de 4
 		vitesse = 3;
 
