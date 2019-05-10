@@ -30,7 +30,10 @@ import biome.MassifMontagneux;
 import biome.Savane;
 import biome.Steppe;
 import biome.Syberie;
-
+/**
+*	Classe permettant d'initialiser le jeu
+*	@author Paul, Armand et Louise
+*/
 public class Initialisation {
 	private String environnementChoisi;
 	private int tPlateau;
@@ -39,6 +42,9 @@ public class Initialisation {
 	private BoutonDemarrage demarrage;
 	private boolean sendData;
 
+	/**
+	*getters et setters
+	*/
 	public int getAnimauxTot() {
 		return animauxTot;
 	}
