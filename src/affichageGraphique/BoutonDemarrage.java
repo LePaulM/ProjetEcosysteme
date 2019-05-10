@@ -10,6 +10,10 @@ import javax.swing.JPanel;
 import biome.Grille;
 import gestion.Gestionnaire;
 
+/**
+* Cette Classe gère le bouton de démarrage
+*
+*/
 public class BoutonDemarrage extends JFrame{
 	private JPanel pan = new JPanel();
 	private JLabel icon;
@@ -21,6 +25,9 @@ public class BoutonDemarrage extends JFrame{
 	String animal2;
 	String animal3;
 
+	/**
+	* Méthode gérant l'affichage du panneau.
+	*/
 	public BoutonDemarrage(){
 		this.setTitle("Démarrage");
 		this.setSize(300, 150);
@@ -32,6 +39,7 @@ public class BoutonDemarrage extends JFrame{
 		this.setVisible(true);
 	}      
 
+	
 	public void importDonnees(JFrame window, Gestionnaire ges, Grille steppe, int tpsInt, String animal1, String animal2, String animal3) {
 		this.window = window;
 		this.ges = ges;
@@ -43,6 +51,9 @@ public class BoutonDemarrage extends JFrame{
 
 	}
 
+	/**
+	* Méthode d'initialisation du panneau démarrer et lancement du jeu
+	*/
 	private void initComponent(){
 		JButton demarrage = new JButton("Démarrer");
 		JLabel animal1 = new JLabel(this.animal1);
