@@ -23,8 +23,8 @@ public class Girafe extends Herbivore{
 	 * @param aProcree : Indique si l'animal s'est reproduit il y a un certain nombre de tours
 	 * @param meurtFaim : indique si l'animal est en état de famine
 	 */
-	public Girafe(int dateNaissance,  Case emplacement,  boolean maturite,boolean aProcree,int meurtFaim) {
-		super(dateNaissance,emplacement, maturite,aProcree,meurtFaim);
+	public Girafe(int dateNaissance,  Case emplacement, boolean aProcree,int meurtFaim) {
+		super(dateNaissance,emplacement, aProcree,meurtFaim);
 
 		// on donne un id à l'animal
 		this.id = Gestionnaire.getAnimaux().size() + 1;
@@ -79,7 +79,7 @@ public class Girafe extends Herbivore{
 								this.setAProcree(true);											// 			la variable permettant de savoir si l'animal a procree devient true
 								for (Case cbis : cases){											// 			on cherche ensuite  
 									if (cbis.getEstVide() == true) {									//			une case vide 
-										Animal girafe = new Girafe (Gestionnaire.getTour(),cbis, this.getMaturite(),	// pour créer un nouvel individu
+										Animal girafe = new Girafe (Gestionnaire.getTour(),cbis, 	// pour créer un nouvel individu
 												this.getAProcree(),this.getMeurtFaim());
 										Gestionnaire.addAnimal(girafe);								//			on ajoute l'animal au gestionnaire
 										break;														//			l'animal se reproduit et arrête de vérifier 

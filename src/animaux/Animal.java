@@ -67,11 +67,6 @@ public abstract class Animal {
 	protected int viande;
 
 	/**
-	 * définit l'age auquel l'animal est assez grand pour se reproduire
-	 */
-	private boolean maturite;
-
-	/**
 	 * si l'animal a procréé récemment 
 	 */
 	private boolean aProcree;
@@ -88,7 +83,6 @@ public abstract class Animal {
 	 * @param dateDeces : int numéro du tour où l'animal décède (change chaque tour jusqu'à sa mort)
 	 * @param emplacement : objet de type Case sur laquelle se trouve l'animal
 	 * @param remplissageEstomac : int définit l'appétit de l'animal. plus ce nombre est faible plus l'animal aura besoin de nourriture ce nombre décroit chaque tour
-	 * @param maturite : définit l'age auquel l'animal est assez grand pour se reproduire
 	 * @param aProcree : si l'animal a procréé récemment 
 	 * @param meurtFaim : Indique le nombre de tours restants lorsque l'animal est en état de famine
 	 */
@@ -98,7 +92,6 @@ public abstract class Animal {
 		this.emplacement = emplacement;
 		this.estVivant = true;
 		this.remplissageEstomac = tailleEstomac/2 % 1;
-		this.maturite = maturite;
 		this.aProcree = aProcree;
 		this.meurtFaim = meurtFaim;
 	}
@@ -202,14 +195,6 @@ public abstract class Animal {
 
 	public void setViande(int viande) {
 		this.viande = viande;
-	}
-
-	public boolean getMaturite() {
-		return this.maturite;
-	}
-
-	public void setMaturite(boolean maturite) {
-		this.maturite = maturite;
 	}
 
 	public boolean getAProcree() {

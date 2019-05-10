@@ -21,12 +21,11 @@ public class Hyene extends Charognard{
 	 * Constructeur
 	 * @param dateNaissance : tour où l'animal est né
 	 * @param emplacement : Case où se situe l'animal
-	 * @param maturite : Tour à partir duquel l'animal peut se reproduire 
 	 * @param aProcree : Indique si l'animal s'est reproduit il y a un certain nombre de tours
 	 * @param meurtFaim : indique si l'animal est en état de famine
 	 */
-	public Hyene(int dateNaissance,  Case emplacement,  boolean maturite,boolean aProcree,int meurtFaim) {
-		super(dateNaissance, emplacement,  maturite, aProcree, meurtFaim);
+	public Hyene(int dateNaissance,  Case emplacement,boolean aProcree,int meurtFaim) {
+		super(dateNaissance, emplacement,  aProcree, meurtFaim);
 
 		// on donne un id à l'animal
 		this.id = Gestionnaire.getAnimaux().size() + 1;
@@ -85,7 +84,7 @@ public class Hyene extends Charognard{
 								this.setAProcree(true);											// 			la variable permettant de savoir si l'animal a procree devient true
 								for (Case cbis : cases){											// 			on cherche ensuite  
 									if (c.getEstVide() == true) {									//			une case vide 
-										Animal hyene = new Hyene (Gestionnaire.getTour(),cbis,  this.getMaturite(),	// pour créer un nouvel individu
+										Animal hyene = new Hyene (Gestionnaire.getTour(),cbis, // pour créer un nouvel individu
 												this.getAProcree(),this.getMeurtFaim());
 										Gestionnaire.addAnimal(hyene);								//			on ajoute l'animal au gestionnaire
 										break;														//			l'animal se reproduit et arrête de vérifier 
