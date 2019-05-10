@@ -1,7 +1,7 @@
 package animaux;
 
-import java.awt.Graphics;
-import javax.swing.JPanel;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import biome.Case;
 import biome.Grille;
@@ -244,104 +244,191 @@ public abstract class Animal {
 	 * Cette méthode déplace l'animal sur une case, à l'aide d'un Random pour la direction (et en fonction de l'occupation  
 	 * des cases alentours) et de sa vitesse, nous allons tester pour chacune des directions alentours
 	 */
-	public void seDeplacer() {
+	public void seDeplacer(int tailleGrille) {
 		int direction=(int)(Math.random() * 9);	// on choisit un nombre entre 1 et 9 qui determinera quelle direction suivra l'animal
+		Case caseSuivante; 
 		if (direction==1) {
-			Case caseSuivante = Grille.getCase(this.getEmplacement().getX() - this.vitesse, this.getEmplacement().getY() + this.vitesse); // on définit ce qui sera la prochaine case
-			if (caseSuivante.getEstVide() == true) { // si la case est vide
-				if (caseSuivante.getTypeOccupation() != 2) {
-					this.setEmplacement(caseSuivante);	//	on y va
-					caseSuivante.setEstVide(false);		//	la case n'est plus vide
-				}					
-			} else {
-				this.seDeplacer();	//si la case n'est pas vide on recommence
+			if(this.getEmplacement().getX() - this.vitesse<0 && this.getEmplacement().getY() + this.vitesse>(tailleGrille-1)) {
+				caseSuivante=Grille.getCase(this.getEmplacement().getX()+tailleGrille-this.vitesse,this.getEmplacement().getY()-tailleGrille+ this.vitesse);
 			}
+			else if (this.getEmplacement().getX() - this.vitesse<0) {
+				caseSuivante=Grille.getCase(this.getEmplacement().getX()+tailleGrille-this.vitesse,this.getEmplacement().getY() + this.vitesse);
+			}
+			else if (this.getEmplacement().getY() + this.vitesse>(tailleGrille-1)){
+				caseSuivante = Grille.getCase(this.getEmplacement().getX() - this.vitesse, this.getEmplacement().getY()-tailleGrille + this.vitesse);
+			}
+			else {
+				caseSuivante = Grille.getCase(this.getEmplacement().getX() - this.vitesse, this.getEmplacement().getY() + this.vitesse);
+			}
+			
+			if(caseSuivante.getEstVide() == false) {
+				this.seDeplacer(tailleGrille);
+			}
+			
+			this.setEmplacement(caseSuivante);
+			caseSuivante.setEstVide(false);
+			
 		}
 
 		if(direction==2) {
-			Case caseSuivante = Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY() + this.vitesse);
-			if (caseSuivante.getEstVide() == true) {
-				if (caseSuivante.getTypeOccupation() != 2) {
-					this.setEmplacement(caseSuivante);
-					caseSuivante.setEstVide(false);
-				}
-			} else {
-				this.seDeplacer();
+			if(this.getEmplacement().getX() - this.vitesse<0 && this.getEmplacement().getY() + this.vitesse>29) {
+				caseSuivante=Grille.getCase(this.getEmplacement().getX()+tailleGrille-this.vitesse,this.getEmplacement().getY()-tailleGrille+ this.vitesse);
 			}
+			else if (this.getEmplacement().getX() - this.vitesse<0) {
+				caseSuivante=Grille.getCase(this.getEmplacement().getX()+tailleGrille-this.vitesse,this.getEmplacement().getY() + this.vitesse);
+			}
+			else if (this.getEmplacement().getY() + this.vitesse>(tailleGrille-1)){
+				caseSuivante = Grille.getCase(this.getEmplacement().getX() - this.vitesse, this.getEmplacement().getY()-tailleGrille + this.vitesse);
+			}
+			else {
+				caseSuivante = Grille.getCase(this.getEmplacement().getX() - this.vitesse, this.getEmplacement().getY() + this.vitesse);
+			}
+			
+			if(caseSuivante.getEstVide() == false) {
+				this.seDeplacer(tailleGrille);
+			}
+			
+			this.setEmplacement(caseSuivante);
+			caseSuivante.setEstVide(false);
+			
 		}
 
 		if(direction==3) {
-			Case caseSuivante = Grille.getCase(this.getEmplacement().getX()+this.vitesse,this.getEmplacement().getY()+this.vitesse);
-			if (caseSuivante.getEstVide() == true) {
-				if (caseSuivante.getTypeOccupation() != 2) {
-					this.setEmplacement(caseSuivante);
-					caseSuivante.setEstVide(false);
-				}
-			} else {
-				this.seDeplacer();
+			if(this.getEmplacement().getX() - this.vitesse<0 && this.getEmplacement().getY() + this.vitesse>(tailleGrille-1)) {
+				caseSuivante=Grille.getCase(this.getEmplacement().getX()+tailleGrille-this.vitesse,this.getEmplacement().getY()-tailleGrille+ this.vitesse);
 			}
+			else if (this.getEmplacement().getX() - this.vitesse<0) {
+				caseSuivante=Grille.getCase(this.getEmplacement().getX()+tailleGrille-this.vitesse,this.getEmplacement().getY() + this.vitesse);
+			}
+			else if (this.getEmplacement().getY() + this.vitesse>(tailleGrille-1)){
+				caseSuivante = Grille.getCase(this.getEmplacement().getX() - this.vitesse, this.getEmplacement().getY()-tailleGrille + this.vitesse);
+			}
+			else {
+				caseSuivante = Grille.getCase(this.getEmplacement().getX() - this.vitesse, this.getEmplacement().getY() + this.vitesse);
+			}
+			
+			if(caseSuivante.getEstVide() == false) {
+				this.seDeplacer(tailleGrille);
+			}
+			
+			this.setEmplacement(caseSuivante);
+			caseSuivante.setEstVide(false);
+			
 		}
 
 		if(direction==4) {
-			Case caseSuivante = Grille.getCase(this.getEmplacement().getX()-this.vitesse,this.getEmplacement().getY());
-			if (caseSuivante.getEstVide() == true) {
-				if (caseSuivante.getTypeOccupation() != 2) {
-					this.setEmplacement(caseSuivante);
-					caseSuivante.setEstVide(false);
-				}
-			}else {
-				this.seDeplacer();
+			if(this.getEmplacement().getX() - this.vitesse<0 && this.getEmplacement().getY() + this.vitesse>(tailleGrille-1)) {
+				caseSuivante=Grille.getCase(this.getEmplacement().getX()+tailleGrille-this.vitesse,this.getEmplacement().getY()-tailleGrille+ this.vitesse);
 			}
+			else if (this.getEmplacement().getX() - this.vitesse<0) {
+				caseSuivante=Grille.getCase(this.getEmplacement().getX()+tailleGrille-this.vitesse,this.getEmplacement().getY() + this.vitesse);
+			}
+			else if (this.getEmplacement().getY() + this.vitesse>(tailleGrille-1)){
+				caseSuivante = Grille.getCase(this.getEmplacement().getX() - this.vitesse, this.getEmplacement().getY()-tailleGrille + this.vitesse);
+			}
+			else {
+				caseSuivante = Grille.getCase(this.getEmplacement().getX() - this.vitesse, this.getEmplacement().getY() + this.vitesse);
+			}
+			
+			if(caseSuivante.getEstVide() == false) {
+				this.seDeplacer(tailleGrille);
+			}
+			
+			this.setEmplacement(caseSuivante);
+			caseSuivante.setEstVide(false);
+			
 		}
 		if(direction==5) {
-			Case caseSuivante = Grille.getCase(this.getEmplacement().getX()+this.vitesse,this.getEmplacement().getY());
-			if (caseSuivante.getEstVide() == true) {
-				if (caseSuivante.getTypeOccupation() != 2) {
-					this.setEmplacement(caseSuivante);
-					caseSuivante.setEstVide(false);
-				}
-			} else {
-				this.seDeplacer();
+			if(this.getEmplacement().getX() - this.vitesse<0 && this.getEmplacement().getY() + this.vitesse>(tailleGrille-1)) {
+				caseSuivante=Grille.getCase(this.getEmplacement().getX()+tailleGrille-this.vitesse,this.getEmplacement().getY()-tailleGrille+ this.vitesse);
 			}
+			else if (this.getEmplacement().getX() - this.vitesse<0) {
+				caseSuivante=Grille.getCase(this.getEmplacement().getX()+tailleGrille-this.vitesse,this.getEmplacement().getY() + this.vitesse);
+			}
+			else if (this.getEmplacement().getY() + this.vitesse>(tailleGrille-1)){
+				caseSuivante = Grille.getCase(this.getEmplacement().getX() - this.vitesse, this.getEmplacement().getY()-tailleGrille + this.vitesse);
+			}
+			else {
+				caseSuivante = Grille.getCase(this.getEmplacement().getX() - this.vitesse, this.getEmplacement().getY() + this.vitesse);
+			}
+			
+			if(caseSuivante.getEstVide() == false) {
+				this.seDeplacer(tailleGrille);
+			}
+			
+			this.setEmplacement(caseSuivante);
+			caseSuivante.setEstVide(false);
+			
 		}
 
 		if (direction==6) {
-			Case caseSuivante = Grille.getCase(this.getEmplacement().getX()-this.vitesse,this.getEmplacement().getY()-this.vitesse);
-			if (caseSuivante.getEstVide() == true) {
-				if (caseSuivante.getTypeOccupation() != 2) {
-					this.setEmplacement(caseSuivante);
-					caseSuivante.setEstVide(false);
-				}
-			} else {
-				this.seDeplacer();
+			if(this.getEmplacement().getX() - this.vitesse<0 && this.getEmplacement().getY() + this.vitesse>(tailleGrille-1)) {
+				caseSuivante=Grille.getCase(this.getEmplacement().getX()+tailleGrille-this.vitesse,this.getEmplacement().getY()-tailleGrille+ this.vitesse);
 			}
+			else if (this.getEmplacement().getX() - this.vitesse<0) {
+				caseSuivante=Grille.getCase(this.getEmplacement().getX()+tailleGrille-this.vitesse,this.getEmplacement().getY() + this.vitesse);
+			}
+			else if (this.getEmplacement().getY() + this.vitesse>(tailleGrille-1)){
+				caseSuivante = Grille.getCase(this.getEmplacement().getX() - this.vitesse, this.getEmplacement().getY()-tailleGrille + this.vitesse);
+			}
+			else {
+				caseSuivante = Grille.getCase(this.getEmplacement().getX() - this.vitesse, this.getEmplacement().getY() + this.vitesse);
+			}
+			
+			if(caseSuivante.getEstVide() == false) {
+				this.seDeplacer(tailleGrille);
+			}
+			
+			this.setEmplacement(caseSuivante);
+			caseSuivante.setEstVide(false);
+			
 		}
 
 		if(direction==7) {
-			Case caseSuivante = Grille.getCase(this.getEmplacement().getX(),this.getEmplacement().getY()-this.vitesse);
-			if (caseSuivante.getEstVide() == true) {
-				if (caseSuivante.getTypeOccupation() != 2) {
-					this.setEmplacement(caseSuivante);
-					caseSuivante.setEstVide(false);
-				}
-			} else {
-				this.seDeplacer();
+			if(this.getEmplacement().getX() - this.vitesse<0 && this.getEmplacement().getY() + this.vitesse>(tailleGrille-1)) {
+				caseSuivante=Grille.getCase(this.getEmplacement().getX()+tailleGrille-this.vitesse,this.getEmplacement().getY()-tailleGrille+ this.vitesse);
 			}
+			else if (this.getEmplacement().getX() - this.vitesse<0) {
+				caseSuivante=Grille.getCase(this.getEmplacement().getX()+tailleGrille-this.vitesse,this.getEmplacement().getY() + this.vitesse);
+			}
+			else if (this.getEmplacement().getY() + this.vitesse>(tailleGrille-1)){
+				caseSuivante = Grille.getCase(this.getEmplacement().getX() - this.vitesse, this.getEmplacement().getY()-tailleGrille + this.vitesse);
+			}
+			else {
+				caseSuivante = Grille.getCase(this.getEmplacement().getX() - this.vitesse, this.getEmplacement().getY() + this.vitesse);
+			}
+			
+			if(caseSuivante.getEstVide() == false) {
+				this.seDeplacer(tailleGrille);
+			}
+			
+			this.setEmplacement(caseSuivante);
+			caseSuivante.setEstVide(false);
+			
 		}
 
 		if(direction==8) {
-			Case caseSuivante = Grille.getCase(this.getEmplacement().getX()+this.vitesse,this.getEmplacement().getY()-this.vitesse);
-			if (caseSuivante.getEstVide() == true) {
-				if (caseSuivante.getTypeOccupation() != 2) {
-					this.setEmplacement(caseSuivante);
-					caseSuivante.setEstVide(false);
-				}
-
-
-			} else {
-				this.seDeplacer();
+			if(this.getEmplacement().getX() - this.vitesse<0 && this.getEmplacement().getY() + this.vitesse>(tailleGrille-1)) {
+				caseSuivante=Grille.getCase(this.getEmplacement().getX()+tailleGrille-this.vitesse,this.getEmplacement().getY()-tailleGrille+ this.vitesse);
 			}
-		}	
+			else if (this.getEmplacement().getX() - this.vitesse<0) {
+				caseSuivante=Grille.getCase(this.getEmplacement().getX()+tailleGrille-this.vitesse,this.getEmplacement().getY() + this.vitesse);
+			}
+			else if (this.getEmplacement().getY() + this.vitesse>(tailleGrille-1)){
+				caseSuivante = Grille.getCase(this.getEmplacement().getX() - this.vitesse, this.getEmplacement().getY()-tailleGrille + this.vitesse);
+			}
+			else {
+				caseSuivante = Grille.getCase(this.getEmplacement().getX() - this.vitesse, this.getEmplacement().getY() + this.vitesse);
+			}
+			
+			if(caseSuivante.getEstVide() == false) {
+				this.seDeplacer(tailleGrille);
+			}
+			this.setEmplacement(caseSuivante);
+			caseSuivante.setEstVide(false);
+			
+		}
+		//ArrayList position=(caseSuivante.getX(),caseSuivante.getY());
 	}
 
 	/**
