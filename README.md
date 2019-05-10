@@ -17,7 +17,7 @@ Cette application permet de simuler différents écosystèmes selon des choix d�
 
 ## <a name="installation"></a> Installation
 Afin de pouvoir utiliser notre application, télechargez tous les fichiers du gitHUB en cliquant sur [ce lien](https://github.com/LePaulM/ProjetJavaEcosysteme.git)
-Ensuite lancez [tel fichier]() 
+Ensuite lancez le main situé dans gestion.
 Vous pouvez ensuite choisir les différents paramètres et observer votre simulation.
 
 ## <a name="exemples"></a> Exemples
