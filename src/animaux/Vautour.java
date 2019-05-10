@@ -39,7 +39,7 @@ public class Vautour extends Charognard{
 		// la renard contient 1 viande à la naissance
 		viande = 1;
 		
-		setEspece("Vautour");
+		this.espece = "Vautour";
 	}
 	
 	//définit l'image de l'animal

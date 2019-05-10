@@ -41,7 +41,7 @@ public class Renard extends Carnivore{
 		// la renard contient 1 viande à la naissance
 		viande = 1;
 		
-		setEspece("Renard");
+		this.espece = "Renard";
 	}
 	
 	//définit l'image de l'animal

@@ -79,9 +79,9 @@ public class JPanelPersonnalise extends JPanel {
 		Graphics2D g2d = (Graphics2D) g;
 
 		int tailleCaseEnPixel = 1200 / ZDialog.getTaille();
-		
+		//System.out.println(Grille.getCase(x, y).getEstVide());
 		if(Grille.getCase(x, y).getEstVide() == false) {
-			System.out.println("2"+Grille.getCase(x, y).getAnimal());
+			//System.out.println("2"+Grille.getCase(x, y).getAnimal().getEspece());
 			//System.out.println("1"+Grille.getCase(x, y).getAnimal().getClass());
 			if (Grille.getCase(x, y).getAnimal().getEspece().equals("Bouquetin")) {
 				Image bouquetinImaged = bouquetin.getImage();
@@ -104,9 +104,9 @@ public class JPanelPersonnalise extends JPanel {
 				g2d.drawImage(girafeImaged, 0, 0, tailleCaseEnPixel, tailleCaseEnPixel, null);
 			}
 			if (Grille.getCase(x, y).getAnimal().getEspece().equals("Hyene")) {
+				System.out.println("Hyene");
 				Image hyeneImaged = hyene.getImage();
 				g2d.drawImage(hyeneImaged, 0, 0, tailleCaseEnPixel, tailleCaseEnPixel, null);
-
 			}
 			if (Grille.getCase(x, y).getAnimal().getEspece().equals("Loup")) {
 				Image loupImaged = loup.getImage();
@@ -121,6 +121,7 @@ public class JPanelPersonnalise extends JPanel {
 				g2d.drawImage(moucheImaged, 0, 0, tailleCaseEnPixel, tailleCaseEnPixel, null);
 			}
 			if (Grille.getCase(x, y).getAnimal().getEspece().equals("Ours")) {
+				System.out.println("Ours");
 				Image oursImaged = ours.getImage();
 				g2d.drawImage(oursImaged, 0, 0, tailleCaseEnPixel, tailleCaseEnPixel, null);
 			}
@@ -129,6 +130,7 @@ public class JPanelPersonnalise extends JPanel {
 				g2d.drawImage(renardImaged, 0, 0, tailleCaseEnPixel, tailleCaseEnPixel, null);
 			}
 			if (Grille.getCase(x, y).getAnimal().getEspece().equals("Singe")) {
+				System.out.println("Singe");
 				Image singeImaged = singe.getImage();
 				g2d.drawImage(singeImaged, 0, 0, tailleCaseEnPixel, tailleCaseEnPixel, null);
 			}

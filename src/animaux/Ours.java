@@ -41,7 +41,7 @@ public class Ours extends Carnivore{
 		// l'ours contient 1 viande à la naissance
 		viande = 1;
 		
-		setEspece("Ours");
+		this.espece = "Ours";
 	}
 	
 	//définit l'image de l'animal

@@ -47,7 +47,7 @@ public class Crocodile extends Carnivore{
 		} else {
 			if (this.getAProcree() == true) {				// on vérifie que l'animal est mature et ne s'est pas reproduit récemment
 			} else {
-
+				System.out.println("salut");
 				// il faut mettre la reproduction dans les classes des animaux 
 				// car Animal est une classe abstraite (on ne peut pas instancier un objet d'une classe abstraite
 				// Création de la liste des cases adjacentes

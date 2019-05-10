@@ -37,7 +37,7 @@ public class Hyene extends Charognard{
 		//la hyene a une vitesse de 3
 		this.vitesse = 3;
 		
-		setEspece("Hyene");
+		this.espece = "Hyene";
 	}
 	
 	//définit l'image de l'animal

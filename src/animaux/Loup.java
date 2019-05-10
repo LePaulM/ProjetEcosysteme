@@ -40,7 +40,7 @@ public class Loup extends Carnivore{
 		// la loup contient 1 viande à la naissance
 		viande = 1;
 		
-		setEspece("Loup");
+		this.espece = "Loup";
 	}
 	
 	//définit l'image de l'animal

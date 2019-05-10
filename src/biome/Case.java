@@ -88,12 +88,12 @@ public abstract class Case {
 			for (Animal animal : Gestionnaire.getAnimaux()) {
 				if (animal.getEmplacement().getPosition().equals(this.getPosition())){
 					animalRetour = animal;
-					System.out.println("Position animal"+animal.getEmplacement().getX()+" "+animal.getEmplacement().getY()+" "+animal.getEmplacement().getPosition());	
-					System.out.println("Position case"+this.getX()+" "+this.getY()+" "+this.getPosition());		
+					//System.out.println("Position animal"+animal.getEmplacement().getX()+" "+animal.getEmplacement().getY()+" "+animal.getEmplacement().getPosition());	
+					//System.out.println("Position case"+this.getX()+" "+this.getY()+" "+this.getPosition());		
 				}
 			}
 		}
-		System.out.println(animalRetour);
+		//System.out.println(animalRetour);
 		return animalRetour;
 	}
 

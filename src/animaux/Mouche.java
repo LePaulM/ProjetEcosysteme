@@ -41,7 +41,7 @@ public class Mouche extends Charognard{
 		// la mouche contient 1 viande à la naissance
 		viande = 1;
 		
-		setEspece("Mouche");
+		this.espece = "Mouche";
 	}
 	
 	//définit l'image de l'animal

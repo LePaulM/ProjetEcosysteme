@@ -4,8 +4,12 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.swing.JFrame;
+
 import affichageGraphique.ZDialog;
 import animaux.Animal;
+import biome.AffichageGrille;
+import biome.Grille;
 /**
  * Classe permettant de gérer le temps et les tours
  * @author Paul,Armand et Louise
@@ -18,13 +22,17 @@ public class Gestionnaire {
 	 */
 	protected static int tour;
 
+
 	/**
 	 * durée d'un tour en millisecondes
 	 */
-	private int id;
 	private static int cadence;
 	private static ArrayList<Animal> animaux = new ArrayList<Animal>();
 
+	/**
+	 * identifiant de l'animal
+	 */
+	private int id;
 
 	/**
 	 * getters et setters
@@ -61,12 +69,10 @@ public class Gestionnaire {
 		animaux.add(animal);
 	}
 
-
 	/**
 	 * Méthode créant un nouveau tour et appelant toutes les méthodes avec les actions des animaux
 	 */
 	public static void nouveauTour(int tailleGrille) {
-		tour = tour++;
 		for (Animal animal : animaux) {							// pour chaque animal présent dans la simulation
 			if (animal.getEstVivant() == false){				// si l'animal est decedé,
 				animal.seDecomposer();							// on applique la fonction seDecomposer()
@@ -85,6 +91,23 @@ public class Gestionnaire {
 			}
 
 		}
+	}
+
+	/**
+	 * Méthode créant un nouveau tour et appelant toutes les méthodes avec les actions des animaux
+	 * Elle fait appel à un timer qui permet de visualiser la 
+	 */
+	public void lancerJeu(JFrame window, Grille grille, int tps) {
+
+		for (tour = 0; tour <= tps; tour++) {
+			//System.out.println("boucle du nombre de tour de gestionnaire");
+			System.out.println(tour);
+			Gestionnaire.nouveauTour(grille.getTaille());
+			window.repaint();
+
+			//System.out.println("je suis dans le timer");
+		};
+
 	}
 }
 

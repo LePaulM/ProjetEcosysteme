@@ -456,25 +456,6 @@ public abstract class Animal {
 	}
 
 	/**
-	 * Méthode permettant d'afficher l'animal
-	 *//*
-	public void afficherAnimal() {
-		Jpanel.repaint();
-		JPanel.revalidate();
-		protected void paintComponent(Graphics g) {
-		public void rafraichir (){
-		// on vide le jpanel
-		this.getContentPane().removeAll();
-		// on le reconstuit a partir de la grille mise a jour
-		((JPanelGrille)this.getContentPane()).construire();
-		this.getContentPane().revalidate();
-		}
-		//
-		// y a des trucs à faire avec tout ça, peut-êtr evoir avec hugo
-	}*/
-
-
-	/**
 	 * cette méthode s'active lorsque l'animal décède
 	 * elle gère le décès de l'animal
 	 */

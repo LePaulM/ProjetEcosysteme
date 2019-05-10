@@ -41,7 +41,7 @@ public class Mammouth extends Herbivore{
 		// la mammouth contient 1 viande à la naissance
 		viande = 1;
 		
-		setEspece("Mammouth");
+		this.espece = "Mammouth";
 	}
 	
 	//définit l'image de l'animal

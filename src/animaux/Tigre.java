@@ -41,12 +41,9 @@ public class Tigre extends Charognard{
 		// la tigre contient 1 viande à la naissance
 		viande = 1;
 		
-		setEspece("Tigre");
+		this.espece = "Tigre";
 	}
 	
-	//définit l'image de l'animal
-		File tigreFile = new File("./ecosysteme/ressources/tigre.png");
-		Icon tigre = new ImageIcon(tigreFile.getAbsolutePath());
 	
 	/**
 	 * 	Cette méthode permet à 2 animaux de la même espèce de se reproduire s'ils sont sur des cases adjacentes et de produire ainsi 

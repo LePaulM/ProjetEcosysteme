@@ -52,36 +52,33 @@ public class Steppe extends Grille{
 		}
 	}
 
-	/**
-	 * Méthode permettant de créer de la neige
-	 */
 	@Override
 	public void creationNeige() {
 		// TODO Auto-generated method stub
 		//	Methode vide car il n'y a pas de neige dans la steppe
 	}
-	
-	/**
-	 * Méthode permettant de créer des montagnes
-	 */
+
 	@Override
 	public void creationMontagne() {
 		// TODO Auto-generated method stub
-		//	Methode vide car il n'y a pas de montagnes dans la steppe
+		//	Methode vide car il n'y a pas de montagne dans la steppe
 	}
 	
+	/**
+	 * Quantitee de buissons l'ecosysteme Steppe ---> a mettre absolument dans une methode ??
+	 */
+	int buisson = (int)Math.pow(getTaille(),2)*5/100;
 
 	/**
 	 * Methode qui cree la grille avec ses composantes, l'ajout successif des sols suit un ordre bien precis
 	 */
 	@Override
 	public void creationGrille() {
-		int buisson = (int)Math.pow(getTaille(),2)*5/100;
-		Steppe  steppe= new Steppe(getTaille());
+		Steppe  steppe = new Steppe(getTaille());
 
 		steppe.creationBuisson(buisson);
 		steppe.creationEau();
-		steppe.afficher();
+		//steppe.afficher();
 	}
 
 

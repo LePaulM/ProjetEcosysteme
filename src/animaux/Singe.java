@@ -41,7 +41,7 @@ public class Singe extends Charognard{
 		// la renard contient 1 viande à la naissance
 		viande = 1;
 		
-		setEspece("Singe");
+		this.espece = "Siège";
 
 	}
 	

@@ -42,7 +42,7 @@ public class Bouquetin extends Herbivore {
 		// le bouquetin contient 1 viande à la naissance
 		viande = 1;
 		
-		setEspece("Bouquetin");
+		this.espece = "Bouquetin";
 		
 
 	}
