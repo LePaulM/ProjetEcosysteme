@@ -31,7 +31,7 @@ Voici quelques images de notre application ![Panneau d'entrée](https://github.c
 
 ## <a name="maj"></a> Mises à jour à prévoir
 Dans l'avenir nous aimerions ajouter les élements suivants à notre application:
-* La visualisation graphique des interactions des animaux (déplacements, reproduction, seNourrir,etc..) Pour l'instant, on ne peut que les visualiser dans la console.
+* Améliorer les interactions entre les animaux de façon à ce qu'elles soient plus précises.
 * Un menu "personnalisé" qui permettra à l'utilisateur de créer complétement son propre écosystème avec ses propres animaux
 * Animaux qui se transforment en cadavres quand ils meurent pour un certain temps
 
